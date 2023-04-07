@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 396 396">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-주문현황X);
+      }
+
+      .cls-2 {
+        fill: #8a8a8a;
+        font-size: 30px;
+        font-family: HGGGothicssi60g, "HGGGothicssi 60g";
+      }
+
+      .cls-3, .cls-4 {
+        fill: none;
+        stroke: #474747;
+        stroke-miterlimit: 10;
+        stroke-width: 10px;
+      }
+
+      .cls-3 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-5 {
+        fill: #474747;
+      }
+
+      .cls-6 {
+        filter: url(#패스_866);
+      }
+
+      .cls-7 {
+        filter: url(#패스_865);
+      }
+
+      .cls-8 {
+        filter: url(#패스_863);
+      }
+
+      .cls-9 {
+        filter: url(#패스_864);
+      }
+
+      .cls-10 {
+        filter: url(#패스_860);
+      }
+
+      .cls-11 {
+        filter: url(#패스_861);
+      }
+
+      .cls-12 {
+        filter: url(#패스_862);
+      }
+    </style>
+    <filter id="패스_862" x="233.219" y="16.333" width="33.662" height="38.582" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#009dff"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="패스_861" x="276.544" y="64.578" width="38.582" height="33.667" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood flood-color="#009dff"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="패스_860" x="292.406" y="130.48" width="40.379" height="26.951" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-3"/>
+      <feFlood flood-color="#009dff"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="패스_864" x="108.122" y="16.33" width="33.669" height="38.586" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-4"/>
+      <feFlood flood-color="#009dff"/>
+      <feComposite operator="in" in2="blur-4"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="패스_863" x="174.027" y="-1.328" width="26.953" height="40.382" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-5"/>
+      <feFlood flood-color="#009dff"/>
+      <feComposite operator="in" in2="blur-5"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="패스_865" x="38.685" y="120.118" width="43.658" height="41.859" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-6"/>
+      <feFlood flood-color="#009dff"/>
+      <feComposite operator="in" in2="blur-6"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="패스_866" x="56.343" y="60.032" width="41.856" height="36.942" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-7"/>
+      <feFlood flood-color="#009dff"/>
+      <feComposite operator="in" in2="blur-7"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-주문현황X">
+      <rect width="396" height="396"/>
+    </clipPath>
+  </defs>
+  <g id="주문현황X" class="cls-1">
+    <g id="그룹_669" data-name="그룹 669" transform="translate(-177 -180)">
+      <text id="최근_주문내역이_없습니다" data-name="최근 주문내역이 없습니다" class="cls-2" transform="translate(375 556)"><tspan x="-155.55" y="0">최근 주문내역이 없습니다</tspan></text>
+      <path id="패스_116" data-name="패스 116" class="cls-3" d="M164.666,146.639V17.76c0-5.513-4.1-8.648-9.631-8.648H25.054c-5.513,0-10.006,3.135-10.006,8.648V197.742c0,5.513,7.021,12.751,12.534,12.751h79.126" transform="translate(274.319 271.465)"/>
+      <path id="패스_117" data-name="패스 117" class="cls-4" d="M119.484,80.751a42.77,42.77,0,1,0-42.762,42.785,42.763,42.763,0,0,0,42.762-42.785" transform="translate(345.417 380.115)"/>
+      <ellipse id="타원_42" data-name="타원 42" class="cls-3" cx="42.77" cy="42.77" rx="42.77" ry="42.77" transform="translate(379.361 418.096)"/>
+      <path id="패스_118" data-name="패스 118" class="cls-3" d="M42.838,40.95V70.916l22.69,7.411" transform="translate(378.88 391.255)"/>
+      <g class="cls-12" transform="matrix(1, 0, 0, 1, 177, 180)">
+        <path id="패스_862-2" data-name="패스 862" class="cls-5" d="M49.672,26.875a4.476,4.476,0,0,0,6.113-1.641l6.708-11.627a4.475,4.475,0,1,0-7.749-4.478L48.035,20.758A4.478,4.478,0,0,0,49.672,26.875Z" transform="translate(194.78 18.44)"/>
+      </g>
+      <g class="cls-11" transform="matrix(1, 0, 0, 1, 177, 180)">
+        <path id="패스_861-2" data-name="패스 861" class="cls-5" d="M77.193,20.018a4.472,4.472,0,0,0-6.112-1.638L59.45,25.093a4.477,4.477,0,0,0,2.243,8.353,4.414,4.414,0,0,0,2.233-.6L75.555,26.13A4.474,4.474,0,0,0,77.193,20.018Z" transform="translate(228.33 55.8)"/>
+      </g>
+      <g class="cls-10" transform="matrix(1, 0, 0, 1, 177, 180)">
+        <path id="패스_860-2" data-name="패스 860" class="cls-5" d="M78.693,32.651H65.266a4.476,4.476,0,0,0,0,8.951H78.693a4.476,4.476,0,1,0,0-8.951Z" transform="translate(240.61 106.83)"/>
+      </g>
+      <g class="cls-9" transform="matrix(1, 0, 0, 1, 177, 180)">
+        <path id="패스_864-2" data-name="패스 864" class="cls-5" d="M26.521,25.237A4.47,4.47,0,0,0,30.4,27.476a4.425,4.425,0,0,0,2.233-.6,4.473,4.473,0,0,0,1.638-6.115L27.553,9.127A4.475,4.475,0,1,0,19.8,13.606Z" transform="translate(97.92 18.44)"/>
+      </g>
+      <g class="cls-8" transform="matrix(1, 0, 0, 1, 177, 180)">
+        <path id="패스_863-2" data-name="패스 863" class="cls-5" d="M38.552,25.287a4.476,4.476,0,0,0,4.476-4.479V7.382a4.476,4.476,0,0,0-8.953,0V20.81A4.476,4.476,0,0,0,38.552,25.287Z" transform="translate(148.95 4.77)"/>
+      </g>
+      <g class="cls-7" transform="matrix(1, 0, 0, 1, 177, 180)">
+        <path id="패스_865-2" data-name="패스 865" class="cls-5" d="M77.193,20.018a4.472,4.472,0,0,0-6.112-1.638L59.45,25.093a4.477,4.477,0,0,0,2.243,8.353,4.414,4.414,0,0,0,2.233-.6L75.555,26.13A4.474,4.474,0,0,0,77.193,20.018Z" transform="translate(106.17 196.98) rotate(-150)"/>
+      </g>
+      <g class="cls-6" transform="matrix(1, 0, 0, 1, 177, 180)">
+        <path id="패스_866-2" data-name="패스 866" class="cls-5" d="M78.693,32.651H65.266a4.476,4.476,0,0,0,0,8.951H78.693a4.476,4.476,0,1,0,0-8.951Z" transform="translate(121.05 146.65) rotate(-150)"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,55 @@
+
+.v-badge__badge {
+
+    position: initial !important;
+}
+.theme--light.v-label {
+    font-weight: bold;
+    font-size: 1rem;
+}
+.v-input--selection-controls .v-input__slot > .v-label, .v-input--selection-controls .v-radio > .v-label {
+    color: black;
+}
+
+.v-list-item {
+    padding: 0 !important;
+}
+.v-slide-group {
+    display: initial !important;
+    height: 3rem;
+}
+
+.v-application .primary--text {
+color: #043474 !important;
+caret-color: #043474 !important;
+}
+
+.v_tab { width:33.3%; }
+.v-tabs--fixed-tabs > .v-tabs-bar .v-tab { font-weight:bold; }
+
+.v-tabs-bar { height:44px!important; }
+
+.v-slide-group__content { border-bottom: 1px solid #ccc!important; }
+.v_row_mncate { margin:0; width:100%; }
+.v_row_mncate .v_col_mncate { padding:0.4rem 2.4rem; }
+.v-btn span{font-weight: 800;}
+.v-badge__badge { bottom: calc(100% - 14px)!important; left: calc(100% - -2px)!important; }
+
+// .v-responsive { height:12vh!important; }
+// .v-toolbar--prominent:not(.v-toolbar--bottom) .v-toolbar__title { font-size:1.3rem!important; }
+
+/* 하단 btn */
+.v-bottom-navigation { position:fixed!important; border-top:1px solid #ccc; height:52px!important; }
+.v-item-group.v-bottom-navigation .v-btn { min-width:0!important; }
+.v-btn:not(.v-btn--round).v-size--default { padding:8px 16px 6px!important; }
+
+
+/* 메인_메뉴목록_아이콘 */
+/*.v_col_mnlist .ma-2 { margin:0!important; }*/
+// .v_col_mnlist .v-avatar--left { margin-right:-0.1rem!important; }
+
+/* 리뷰쓰기 */
+.rv_write .rv_text .v-input__slot { height:38vh!important; }
+.rv_write .upload_file .v-input__prepend-outer { position:absolute!important; top:-43px!important; margin-right:0!important; }
+.rv_write .upload_file .v-input__slot, .rv_write .upload_file .v-text-field__details { display:none!important; }
+

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 49 35">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-카드);
+      }
+
+      .cls-2, .cls-5 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke: #0856c3;
+        stroke-width: 3px;
+      }
+
+      .cls-3 {
+        fill: #0856c3;
+      }
+
+      .cls-4 {
+        stroke: none;
+      }
+    </style>
+    <clipPath id="clip-카드">
+      <rect width="49" height="35"/>
+    </clipPath>
+  </defs>
+  <g id="카드" class="cls-1">
+    <g id="그룹_850" data-name="그룹 850" transform="translate(-48 -1195)">
+      <g id="사각형_806" data-name="사각형 806" class="cls-2" transform="translate(50 1197)">
+        <rect class="cls-4" width="45" height="31" rx="5"/>
+        <rect class="cls-5" x="1.5" y="1.5" width="42" height="28" rx="3.5"/>
+      </g>
+      <rect id="사각형_807" data-name="사각형 807" class="cls-3" width="45" height="6.089" transform="translate(50 1203.569)"/>
+    </g>
+  </g>
+</svg>

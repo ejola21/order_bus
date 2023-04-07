@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 638 103">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-아트보드_2);
+      }
+
+      .cls-2 {
+        fill: #ffde00;
+        stroke: #3c1e1e;
+        stroke-width: 2px;
+      }
+
+      .cls-3, .cls-4 {
+        fill: #3c1e1e;
+      }
+
+      .cls-3 {
+        font-size: 35px;
+        font-family: AppleSDGothicNeoB, Apple SD Gothic Neo;
+      }
+
+      .cls-5 {
+        stroke: none;
+      }
+
+      .cls-6 {
+        fill: none;
+      }
+    </style>
+    <clipPath id="clip-아트보드_2">
+      <rect width="638" height="103"/>
+    </clipPath>
+  </defs>
+  <g id="아트보드_2" data-name="아트보드 – 2" class="cls-1">
+    <g id="사각형_659" data-name="사각형 659" class="cls-2" transform="translate(0.5)">
+      <rect class="cls-5" width="637" height="103"/>
+      <rect class="cls-6" x="1" y="1" width="635" height="101"/>
+    </g>
+    <text id="카카오계정으로_로그인" data-name="카카오계정으로 로그인" class="cls-3" transform="translate(319 66)"><tspan x="-155.977" y="0">카카오계정으로 로그인</tspan></text>
+    <g id="그룹_484" data-name="그룹 484" transform="translate(1791 103)">
+      <ellipse id="타원_70" data-name="타원 70" class="cls-4" cx="24" cy="18.5" rx="24" ry="18.5" transform="translate(-1761 -71)"/>
+      <path id="패스_780" data-name="패스 780" class="cls-4" d="M-1751.648,120.8l2.989-13.45,9.34,5.231Z" transform="translate(0 -148)"/>
+    </g>
+  </g>
+</svg>

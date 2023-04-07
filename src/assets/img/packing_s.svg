@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-포장1);
+      }
+
+      .cls-3 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-4 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-5 {
+        clip-path: url(#clip-path-2);
+      }
+
+      .cls-6 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-7 {
+        clip-path: url(#clip-path-3);
+      }
+
+      .cls-8 {
+        fill: #0856c3;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="패스_1045" data-name="패스 1045" class="cls-1" d="M191.479-374.18v4.855h5.972a3.715,3.715,0,0,0,3.624-4.048h0c0-2.562-2.45-4.048-4.823-4.048h0c-2.373,0-4.772.868-4.772,3.241" transform="translate(-191.479 377.421)"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="0.017" y1="0.384" x2="0.212" y2="0.384" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#6dc6ff"/>
+      <stop offset="0.1" stop-color="#79c4ff"/>
+      <stop offset="0.2" stop-color="#85c1ff"/>
+      <stop offset="0.3" stop-color="#91beff"/>
+      <stop offset="0.4" stop-color="#9dbbff"/>
+      <stop offset="0.5" stop-color="#a9b8ff"/>
+      <stop offset="0.6" stop-color="#b5b6ff"/>
+      <stop offset="0.7" stop-color="#c1b3ff"/>
+      <stop offset="0.8" stop-color="#cdb0ff"/>
+      <stop offset="0.9" stop-color="#d9adff"/>
+      <stop offset="1" stop-color="#e6aaff"/>
+    </linearGradient>
+    <clipPath id="clip-path-2">
+      <path id="패스_1047" data-name="패스 1047" class="cls-1" d="M103.259-373.373a3.715,3.715,0,0,0,3.624,4.048h5.972v-4.855c0-2.373-2.4-3.241-4.772-3.241h0c-2.373,0-4.823,1.487-4.823,4.048" transform="translate(-103.259 377.421)"/>
+    </clipPath>
+    <linearGradient id="linear-gradient-2" x1="0.017" y1="0.385" x2="0.212" y2="0.385" xlink:href="#linear-gradient"/>
+    <clipPath id="clip-path-3">
+      <path id="패스_1049" data-name="패스 1049" class="cls-1" d="M0-384.133H41.585v41.78H0Z" transform="translate(0 384.133)"/>
+    </clipPath>
+    <clipPath id="clip-포장1">
+      <rect width="50" height="50"/>
+    </clipPath>
+  </defs>
+  <g id="포장1" class="cls-2">
+    <g id="그룹_845" data-name="그룹 845" transform="translate(4.188 3.93)">
+      <g id="그룹_788" data-name="그룹 788" class="cls-3" transform="translate(20.826 0.73)">
+        <g id="그룹_787" data-name="그룹 787" transform="translate(20.758 -0.73) rotate(90)">
+          <path id="패스_1044" data-name="패스 1044" class="cls-4" d="M0,41.585V0H41.78V41.585Z" transform="translate(0 0)"/>
+        </g>
+      </g>
+      <g id="그룹_790" data-name="그룹 790" class="cls-5" transform="translate(11.231 0.73)">
+        <g id="그룹_789" data-name="그룹 789" transform="translate(30.354 -0.73) rotate(90)">
+          <path id="패스_1046" data-name="패스 1046" class="cls-6" d="M0,41.585V0H41.78V41.585Z" transform="translate(0 0)"/>
+        </g>
+      </g>
+      <g id="그룹_792" data-name="그룹 792" class="cls-7">
+        <g id="그룹_791" data-name="그룹 791" transform="translate(0 0)">
+          <path id="패스_1048" data-name="패스 1048" class="cls-8" d="M-326.49-120.817a1.173,1.173,0,0,1-1.172,1.171h-35.761a1.173,1.173,0,0,1-1.172-1.171v-2.716a2.195,2.195,0,0,1,2.192-2.192h9.644v1.267h1.74v-1.267h1.526v2.9h1.74v-2.9h1.373v4.5h1.74v-4.5h1.373v2.9h1.74v-2.9h1.441v1.267h1.74v-1.267h9.661a2.195,2.195,0,0,1,2.192,2.192Zm-3.2,9.848h-11.836v-6.936h11.836Zm-4.234,15.448h-7.6V-102.8h11.836v3.043a4.239,4.239,0,0,1-4.234,4.234m-27.541-4.234V-102.8h11.972v7.277h-7.738a4.239,4.239,0,0,1-4.234-4.234m0-9.474h11.972v1.458h-6.037v1.74h6.037v1.492h-11.972Zm19.939,3.2h6.071v-1.74h-6.071v-1.458h11.836v4.691h-11.836Zm-3.113-5.072v-6.8h1.373v22.384h-4.487v-22.384h1.373v6.8Zm-4.854.134h-11.972v-6.936h11.972Zm0-6.936-4.742-12.738c0-1.989,2.01-3.178,3.953-3.178.915,0,3.9.171,3.9,2.371v3.985h-4.92c-.941-.428-2.935-1.652-2.935-3.178m13.5-3.178c1.943,0,3.953,1.189,3.953,3.178,0,1.526-2,2.75-2.935,3.178h-4.92v-3.985c0-2.2,2.987-2.371,3.9-2.371m12.054,6.356h-7.931a4.4,4.4,0,0,0,1.57-3.178c0-3.078-2.895-4.918-5.693-4.918a6.17,6.17,0,0,0-4.772,1.693,6.171,6.171,0,0,0-4.772-1.693c-2.8,0-5.693,1.84-5.693,4.918a4.4,4.4,0,0,0,1.57,3.178h-8a3.937,3.937,0,0,0-3.932,3.932v2.716a2.915,2.915,0,0,0,2.912,2.912h.219v18.15a5.981,5.981,0,0,0,5.974,5.974h23.308a5.981,5.981,0,0,0,5.974-5.974v-18.15h.287a2.915,2.915,0,0,0,2.912-2.912v-2.716a3.937,3.937,0,0,0-3.932-3.932" transform="translate(366.334 135.561)"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

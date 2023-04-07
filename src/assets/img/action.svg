@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 20 20">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-즐겿자기);
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #ff0;
+        stroke-width: 0.75px;
+      }
+    </style>
+    <clipPath id="clip-즐겿자기">
+      <rect width="20" height="20"/>
+    </clipPath>
+  </defs>
+  <g id="즐겿자기" class="cls-1">
+    <line id="선_2" data-name="선 2" class="cls-2" y1="11.779" transform="translate(10.174 0.768)"/>
+    <path id="패스_3" data-name="패스 3" class="cls-2" d="M371.843,1414.021h-4.854v12.789h12.847v-12.789H374.95" transform="translate(-363.228 -1407.876)"/>
+    <path id="패스_2" data-name="패스 2" class="cls-2" d="M365.645,1264.568l3.118-3.118,3.118,3.118" transform="translate(-358.589 -1260.699)"/>
+  </g>
+</svg>

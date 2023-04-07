@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 63 63">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-다운로드);
+      }
+
+      .cls-2, .cls-3 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke: #0856c3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-miterlimit: 10;
+        stroke-width: 3px;
+      }
+    </style>
+    <clipPath id="clip-다운로드">
+      <rect width="63" height="63"/>
+    </clipPath>
+  </defs>
+  <g id="다운로드" class="cls-1">
+    <g id="다운로드-01" transform="translate(0.037 0.331)">
+      <g id="그룹_15" data-name="그룹 15" transform="translate(11.902 11.473)">
+        <path id="패스_23" data-name="패스 23" class="cls-2" d="M33.876,39.429V21.818M53.31,47.344a5.446,5.446,0,0,1-5.446,5.446H19.891a5.445,5.445,0,0,1-5.447-5.446V19.369a5.446,5.446,0,0,1,5.447-5.446H47.864a5.447,5.447,0,0,1,5.446,5.446Zm-6.072-8.521v3.666a2.082,2.082,0,0,1-1.953,1.8H22.538a2.157,2.157,0,0,1-2.022-1.8V38.822M41.2,33.085l-6.161,6.161a1.633,1.633,0,0,1-2.311,0l-6.16-6.161" transform="translate(-14.443 -13.923)"/>
+      </g>
+      <rect id="사각형_166" data-name="사각형 166" class="cls-3" width="62.669" height="62.669"/>
+    </g>
+  </g>
+</svg>

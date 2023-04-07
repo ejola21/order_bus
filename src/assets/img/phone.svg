@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 63 63">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #0856c3;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-폰_파랑_);
+      }
+
+      .cls-3 {
+        clip-path: url(#clip-path);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="패스_812" data-name="패스 812" class="cls-1" d="M0-138.667H38.333v60.176H0Z" transform="translate(0 138.667)"/>
+    </clipPath>
+    <clipPath id="clip-폰_파랑_">
+      <rect width="63" height="63"/>
+    </clipPath>
+  </defs>
+  <g id="폰_파랑_" data-name="폰(파랑)" class="cls-2">
+    <g id="그룹_480" data-name="그룹 480" transform="translate(12 1)">
+      <g id="그룹_447" data-name="그룹 447" class="cls-3">
+        <g id="그룹_446" data-name="그룹 446" transform="translate(0 0)">
+          <path id="패스_811" data-name="패스 811" class="cls-1" d="M-45.59-63.631a2.46,2.46,0,0,1-2.46,2.46H-74.7a2.46,2.46,0,0,1-2.46-2.46v-41.622a2.46,2.46,0,0,1,2.46-2.461h26.65a2.46,2.46,0,0,1,2.46,2.461Zm-14.568,8.753h-2.435a1.9,1.9,0,0,1-1.9-1.9,1.9,1.9,0,0,1,1.9-1.9h2.435a1.9,1.9,0,0,1,1.9,1.9,1.9,1.9,0,0,1-1.9,1.9m15.488-57.536H-78.082a2.46,2.46,0,0,0-2.46,2.46V-54.7a2.46,2.46,0,0,0,2.46,2.46h33.413a2.46,2.46,0,0,0,2.461-2.46v-55.255a2.46,2.46,0,0,0-2.461-2.46" transform="translate(80.542 112.414)"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

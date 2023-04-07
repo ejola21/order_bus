@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 63 63">
+  <defs>
+    <style>
+      .cls-1, .cls-4 {
+        fill: none;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-홈);
+      }
+
+      .cls-3 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-4 {
+        stroke: #0856c3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 3px;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="패스_796" data-name="패스 796" class="cls-1" d="M0-31H63V32H0Z" transform="translate(0 31)"/>
+    </clipPath>
+    <clipPath id="clip-홈">
+      <rect width="63" height="63"/>
+    </clipPath>
+  </defs>
+  <g id="홈" class="cls-2">
+    <g id="그룹_382" data-name="그룹 382" class="cls-3">
+      <g id="그룹_378" data-name="그룹 378" transform="translate(15.184 11.053)">
+        <path id="패스_792" data-name="패스 792" class="cls-4" d="M0,6.1V-4.405C0-5.448.494-5.913,1.532-5.913H3.451c1.041,0,1.569.465,1.569,1.508V1.149" transform="translate(0 5.913)"/>
+      </g>
+      <g id="그룹_379" data-name="그룹 379" transform="translate(27.107 35.527)">
+        <path id="패스_793" data-name="패스 793" class="cls-4" d="M4.143,8.332v-14.9c0-1.043-.372-1.508-1.41-1.508H-2.6c-1.041,0-1.416.465-1.416,1.508v14.9" transform="translate(4.014 8.072)"/>
+      </g>
+      <g id="그룹_380" data-name="그룹 380" transform="translate(14.556 25.306)">
+        <path id="패스_794" data-name="패스 794" class="cls-4" d="M17.213,0V25.535a2.685,2.685,0,0,1-2.349,2.256H-14.322a2.69,2.69,0,0,1-2.353-2.256V0" transform="translate(16.675)"/>
+      </g>
+      <g id="그룹_381" data-name="그룹 381" transform="translate(5.936 9.902)">
+        <path id="패스_795" data-name="패스 795" class="cls-4" d="M25.97,11.692,5.2-9.083c-2.991-2.991-6.589-2.991-9.58,0L-25.158,11.692" transform="translate(25.158 11.327)"/>
+      </g>
+    </g>
+  </g>
+</svg>

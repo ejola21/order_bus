@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 396 396">
+  <defs>
+    <style>
+      .cls-1, .cls-6 {
+        fill: none;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-경매x);
+      }
+
+      .cls-3 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-4, .cls-7 {
+        fill: #8a8a8a;
+      }
+
+      .cls-5 {
+        clip-path: url(#clip-path-2);
+      }
+
+      .cls-6 {
+        stroke: #bbb;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 10px;
+      }
+
+      .cls-7 {
+        font-size: 30px;
+        font-family: HGGGothicssi60g, "HGGGothicssi 60g";
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect class="cls-1" width="81" height="12"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect class="cls-1" width="69" height="12"/>
+    </clipPath>
+    <clipPath id="clip-경매x">
+      <rect width="396" height="396"/>
+    </clipPath>
+  </defs>
+  <g id="경매x" class="cls-2">
+    <g id="그룹_667" data-name="그룹 667" transform="translate(-191 -190)">
+      <g id="반복_그리드_2" data-name="반복 그리드 2" class="cls-3" transform="translate(449 376)">
+        <g transform="translate(-208 -355)">
+          <circle id="타원_86" data-name="타원 86" class="cls-4" cx="6" cy="6" r="6" transform="translate(208 355)"/>
+        </g>
+        <g transform="translate(-176 -355)">
+          <circle id="타원_86-2" data-name="타원 86" class="cls-4" cx="6" cy="6" r="6" transform="translate(208 355)"/>
+        </g>
+        <g transform="translate(-144 -355)">
+          <circle id="타원_86-3" data-name="타원 86" class="cls-4" cx="6" cy="6" r="6" transform="translate(208 355)"/>
+        </g>
+      </g>
+      <g id="반복_그리드_3" data-name="반복 그리드 3" class="cls-5" transform="translate(249 376)">
+        <g transform="translate(-208 -355)">
+          <circle id="타원_86-4" data-name="타원 86" class="cls-4" cx="6" cy="6" r="6" transform="translate(208 355)"/>
+        </g>
+        <g transform="translate(-176 -355)">
+          <circle id="타원_86-5" data-name="타원 86" class="cls-4" cx="6" cy="6" r="6" transform="translate(208 355)"/>
+        </g>
+        <g transform="translate(-144 -355)">
+          <circle id="타원_86-6" data-name="타원 86" class="cls-4" cx="6" cy="6" r="6" transform="translate(208 355)"/>
+        </g>
+      </g>
+      <g id="그룹_665" data-name="그룹 665" transform="translate(318 220.9)">
+        <g id="그룹_526" data-name="그룹 526" transform="translate(3.356 3.356)">
+          <path id="패스_870" data-name="패스 870" class="cls-6" d="M34.781,111.661V50.718l41.066-40.8c0-26.223,21.45-46.153,23.968-48.46S122.681-61.2,96.877-61.2,53.242-19.244,53.242-19.244V-139.661A12.672,12.672,0,0,0,40.551-152.2a12.671,12.671,0,0,0-12.693,12.542l.106-12.423a12.584,12.584,0,0,0-12.589-12.542A12.492,12.492,0,0,0,2.893-152.083v16.318a12.855,12.855,0,0,0-12.9-12.542,12.855,12.855,0,0,0-12.9,12.542l-.21,29.011c0-6.928-5.137-12.542-12.063-12.542s-13.95,5.614-13.95,12.542v69.049s-4.825,37.971,0,57.9S-33.819,64.46-2.141,55.229" transform="translate(51.278 164.625)"/>
+        </g>
+        <g id="그룹_527" data-name="그룹 527" transform="translate(57.527 148.479)">
+          <path id="패스_871" data-name="패스 871" class="cls-6" d="M0,8.244S11.748-14.833,50.348-11.9" transform="translate(0 12.154)"/>
+        </g>
+        <g id="그룹_528" data-name="그룹 528" transform="translate(31.558 61.776)">
+          <path id="패스_872" data-name="패스 872" class="cls-6" d="M0,0V48.361"/>
+        </g>
+        <g id="그룹_529" data-name="그룹 529" transform="translate(57.527 32.936)">
+          <path id="패스_873" data-name="패스 873" class="cls-6" d="M0,0V68.809"/>
+        </g>
+        <g id="그룹_530" data-name="그룹 530" transform="translate(82.518 28.143)">
+          <path id="패스_874" data-name="패스 874" class="cls-6" d="M0,0V71.924"/>
+        </g>
+        <g id="그룹_531" data-name="그룹 531" transform="translate(23.332 100.683)">
+          <path id="패스_875" data-name="패스 875" class="cls-6" d="M0,6.873S22.657-15.154,68.18-9.071" transform="translate(0 10.133)"/>
+        </g>
+        <path id="패스_876" data-name="패스 876" class="cls-1" d="M0-168.625H167.8v283H0Z" transform="translate(0 168.625)"/>
+      </g>
+    </g>
+    <text id="경매_이벤트가_없습니다" data-name="경매 이벤트가 없습니다" class="cls-7" transform="translate(198 376)"><tspan x="-142.05" y="0">경매 이벤트가 없습니다</tspan></text>
+  </g>
+</svg>
