@@ -5,13 +5,13 @@
     <v-navigation-drawer v-model="drawer" :clipped="$vuetify.breakpoint.lgAndUp" right app>
       <template v-slot:prepend>
         <v-list-item two-line>
-          <!-- <v-list-item-avartar>
+          <v-list-item-avartar>
             <v-icon>mdi-store-outline</v-icon>
-          </v-list-item-avartar>-->
-          <img src="./assets/img/cc_logo.png" width="100%" />
+          </v-list-item-avartar>
+          <!-- <img src="./assets/img/cc_logo.png" width="100%" /> -->
           <!-- <v-list-item-avatar>
             <img src="https://randomuser.me/api/portraits/women/81.jpg">
-          </v-list-item-avatar>-->
+          </v-list-item-avatar> -->
 
           <v-list-item-content>
             <v-list-item-title>{{store.store_name}}</v-list-item-title>
