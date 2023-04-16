@@ -24,15 +24,20 @@
         </div>
         <div class="product_desc inline_block">
             <div class="product_title_name inline_block">{{ s_product.product_name }}</div>
-            <div v-if="s_product.price_yn == 'Y' && isSoldOut" class="product_title_price inline_block sold_out_color">{{
+
+            <!-- <div v-if="s_product.price_yn == 'Y' && isSoldOut" class="product_title_price inline_block sold_out_color">{{
                 s_product.sale_price > 0 ? formatPrice(s_product.sale_price, 'default') : formatPrice(s_product.price,
                     'default') }}원</div>
+
+
             <div v-else-if="s_product.price_yn == 'Y' && !isSoldOut"
                 :class="isSalePrice ? 'sale_title_price_color' : 'title_price_color'"
                 class="product_title_price inline_block">{{ s_product.sale_price > 0 ? formatPrice(s_product.sale_price,
                     'default') : formatPrice(s_product.price, 'default') }}원</div>
             <div v-else-if="s_product.price_yn == 'N'" class="product_title_price inline_block">{{
-                formatPrice(s_product.price, 'default') }}</div>
+                formatPrice(s_product.price, 'default') }}</div> -->
+
+
             <div class="p_desc" v-if="s_product.desc.length > 0">
                 <div class="desc_desc">
                     <!-- <span class="desc_title">메뉴 정보</span> -->
@@ -46,6 +51,7 @@
                     <span class="p_origin_desc">{{ s_product.origin }}</span>
                 </div>
             </div>
+
         </div>
         <div class="product_option">
             <div class="select_option_name" v-if="s_product.p_grp_id1 > 0">
@@ -152,17 +158,12 @@
         </div>
 
         <div v-if="s_product.sold_out_yn == 'N' && s_product.price_yn == 'Y'" class="group">
-            <div class="item">인원</div>
+            <div class="item">{{ s_product.sale_price > 0 ? formatPrice(s_product.sale_price, 'default') : formatPrice(s_product.price,'default') }}원</div>
             <div class="icon_span">
-                <div class="img-wrapper-left img-wrapper inline_block">
-                    <img src="../assets/img/-.svg" height="35rem" width="35rem" @click.stop="cntMinus" />
-                </div>
-                <div class="inline_block cnt_div">
-                    <span>{{ cnt }}</span>
-                </div>
 
-                <div class="img-wrapper-right img-wrapper inline_block">
-                    <img src="../assets/img/+.svg" height="35rem" width="35rem" @click.stop="cntPlus" />
+                인원
+                <div class="inline_block cnt_div">
+                      <span>{{ cnt }}</span>
                 </div>
             </div>
         </div>
@@ -194,13 +195,13 @@
         <div class="memo_background">
             버스 좌석 선택
             <!-- <v-card class="demo-paper memo_window" :zDepth="1"> -->
-            <v-item-group class="chair_group" multiple>
+            <v-item-group  v-model="selected" multiple>
                 <v-container>
-                    <v-row v-for="n in 9" :key="n" justify="center">
+                    <v-row no-gutters v-for="n in 9" :key="n" >
                         <v-col>
                             <v-item v-slot="{ active, toggle }"> 
                                 <v-card  class="chair" :color="active ? 'primary' : ''"
-                                    width="50" height="50" @click="toggle">
+                                    @click="chairClick(toggle)" >
                                     <div v-if="n == 1">{{ 1 }}</div>
                                     <div v-else>{{ (n - 1) * 3 + 1 }}</div>
                                 </v-card>
@@ -209,48 +210,33 @@
                         <v-col>
                             <v-item v-slot="{ active, toggle }"> 
                               <v-card  class="chair" :color="active ? 'primary' : ''"
-                                        width="50" height="50" @click="toggle">
+                                     @click="chairClick(toggle)" >
                                     <div v-if="n == 1">{{ 2 }}</div>
                                     <div v-else>{{ (n - 1) * 3 + 2 }}</div>
                                 </v-card>
                             </v-item>
                         </v-col>
-
-                        <v-spacer v-if="n!= 9"></v-spacer>
-                      
-                        <v-col>
+                        <!-- <v-spacer class="chair_space1"  v-if="n!= 9"></v-spacer> -->
+                        <v-col  v-bind:class="{ chair_space: n != 9 }">
                             <v-item v-slot="{ active, toggle }"> 
                                <v-card  class="chair" :color="active ? 'primary' : ''"
-                                        width="50" height="50" @click="toggle">
+                                     @click="chairClick(toggle)" >
                                     <div v-if="n == 1">{{ 3 }}</div>
                                     <div v-else>{{ (n - 1) * 3 + 3 }}</div>
                                 </v-card>
                             </v-item>
                         </v-col>
+
                         <v-col v-if="n==9">
                             <v-item v-slot="{ active, toggle }"> 
                                 <v-card  class="chair" :color="active ? 'primary' : ''"
-                                        width="50" height="50" @click="toggle">
+                                    @click="chairClick(toggle)" >
                                     
                                     <div>{{ (n - 1) * 3 + 4 }}</div>
                                 </v-card>
                             </v-item>
                         </v-col>
-                        <!-- <div v-for="i in 12" :key="i" >
-                        <v-col cols="4" v-if="i==2">
-                            <v-item v-slot="{ active, toggle }"> 
-                                <v-card :color="active ? 'primary' : ''" class="text-h2 text-center" dark
-                                    width="50" height="50" @click="toggle">
-                                    {{ i }}
-                                    
-                                </v-card>
-                            </v-item>
-                           
-                        </v-col>
-                   
-                         <v-spacer v-if="i == 2" ></v-spacer>
-                         </div> -->
-          
+                       
                     </v-row>
                 </v-container>
             </v-item-group>
@@ -342,12 +328,18 @@ export default {
                 p_grp_id: this.s_product.pm_grp_id
             });
         }
+
+    },
+    watch: {
+        activeCount() {
+            console.log(`Clicked ${this.activeCount} times`);
+        }
     },
     data() {
         return {
             j: "space-between",
             dummy_p_o_val: 1000,
-            cnt: 1,
+            cnt: 0,
             u_price: "",
             price: 0,
             total_price: 0,
@@ -369,7 +361,8 @@ export default {
             isSoldOut: false,
             heightObj: {},
             isSalePrice: false,
-            select: "주문 "
+            select: "주문 ",
+            selected: []
         };
     },
     mounted() {
@@ -504,6 +497,18 @@ export default {
                 this.price = 0;
             else this.price = this.u_price;
             this.total_price = this.price;
+        },
+         chairClick(toggle){
+             console.log("chairClick",toggle);
+             toggle();
+            this.cnt = this.selected.length;
+            console.log("chairClick",this.selected.length);
+            this.calcPrice();
+        },
+        toggle(){
+            console.log("toggle");
+            this.cnt = this.selected.length;
+            this.calcPrice();
         },
         cntPlus() {
             this.cnt += 1;
@@ -719,7 +724,7 @@ export default {
     border-bottom: 1px solid rgba(230, 230, 230, 1);
 }
 
-.product_title_name,
+
 .product_title_price {
     overflow: hidden;
     display: inline-block;
@@ -730,8 +735,8 @@ export default {
 }
 
 .product_title_name {
-    width: 60%;
-    /* margin-top: 14%; */
+ font-size: 1.2rem;
+    font-weight: bold;
 }
 
 .title_price_color {
@@ -773,8 +778,10 @@ export default {
 }
 
 .cnt_div {
-    width: 60%;
+    
     text-align: center;
+    width: 50%;
+    
 }
 
 .radio_place {
@@ -815,11 +822,13 @@ export default {
     /* justify-content: space-between; */
     align-items: center;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+    font-weight: bold;
+    font-size: 1.1rem;
     /* border-bottom: 1px solid rgba(230, 230, 230, 1); */
 }
 
 .icon_span {
-    width: 30%;
+    width: 20%;
     position: absolute;
     right: 3.5%;
     flex-direction: row;
@@ -833,10 +842,12 @@ export default {
 }
 
 .item {
-    font-size: 1rem;
     width: 50%;
     font-weight: bold;
-    padding: 1rem;
+    padding-top: 1rem;
+    padding-left: 1.5rem;
+    padding-bottom: 1rem;
+    color: #d10000;
 }
 
 .price {
@@ -873,15 +884,18 @@ export default {
     font-size: 2rem;
 }
 .chair {
+    margin-bottom: 1rem;
     background-image:url("../assets/img/icons/chair62.png");
     background-size: 100% 100%;
     background-color:darkgrey ;
     text-align: center;
     color : black;
+    width: 4rem;
+    height: 3.8rem;
     padding-top: 10px ;
 }
-.chair_group{
-    padding-left: 2rem;
+.chair_space{
+    padding-left: 25%;
 }
 .order_btns {
     width: 100%;
