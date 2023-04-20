@@ -5,16 +5,11 @@
         <div class="tit">{{store.store_name}}</div>
         <div id="grid">
         <div class="sub_tit">
-          영업시간<br/>
-          배달<br/>
-          원산지<br/>
-          주소<br/>
+
+          주소<br/><br/>
           전화번호
         </div>
         <div class="con">
-          {{ store.biz_time }}<br/>
-          {{ store.delivery_place }}<br/>
-          {{ store.store_orign }}<br/>
           {{ store.address1 }} {{ store.address_detail }}<br/>
           {{ store.phone }}
           </div>
@@ -32,7 +27,7 @@
       let tmp = this.$store.getters.store;
       tmp.desc = tmp.desc.replace(/(?:\n)/g, '<br />');
       //if (tmp.store.img_url_)
-      tmp.img_url_ = 'https://s3.ap-northeast-2.amazonaws.com/tdpay.s3/data/store_img/' + tmp.img_url;
+      tmp.img_url_ =  tmp.img_url;
       console.log('!!!!!!',tmp.img_url);
       return tmp;
     },
