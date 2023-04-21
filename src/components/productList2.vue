@@ -1,55 +1,61 @@
 <template>
   <div class="prd_list_wrap">
-    
-      <v-card class="ma-2"  v-on:click="itemSelect(product)">
-        <lazy-component @show="handler" class="img_div">
-          <v-img :src="product.img_thumb_url" :lazy-src="product.img_thumb_url" aspect-ratio="1.4">
-            <v-row
-              v-if="product.sold_out_yn == 'Y'"
-              class="black pt-8 pbfill-height"
-              style="opacity:0.5;"
-            >
-              <v-col>
-                <div class="white--text text-center">준비중</div>
-              </v-col>
-            </v-row>
-          </v-img>
+    <v-card class="ma-2" v-on:click="itemSelect(product)">
+      <lazy-component @show="handler" class="img_div">
+        <v-img :src="product.img_url" :lazy-src="product.img_url">
+          <v-row
+            v-if="product.sold_out_yn == 'Y'"
+            class="black pt-8 pbfill-height"
+            style="opacity:0.5;"
+          >
+            <v-col>
+              <div class="white--text text-center">준비중</div>
+            </v-col>
+          </v-row>
+        </v-img>
 
-          <img src="../assets/img/time_sale.png" class="sale_tag" />
+        <img src="../assets/img/time_sale.png" class="sale_tag" />
 
-          <!-- <div class="sale_tag">할인</div> -->
-        </lazy-component>
+        <!-- <div class="sale_tag">할인</div> -->
+      </lazy-component>
 
-        <div class="pa-3 list_con">
-          <div class="name">
-            {{product.product_name}}
-            <v-chip
-              v-if="product.sale_price > 0"
-              class="ma-2"
-              color="light-blue darken-3"
-              text-color="white"
-            >SALE</v-chip>
-            <v-chip
-              v-if="product.sold_out_yn == 'Y'"
-              class="ma-2"
-              color="red darken-2"
-              text-color="white"
-            >SOLD OUT</v-chip>
-          </div>
-
-          <span class="d-inline-block text-truncate" style="max-width: 60vw">{{product.desc}}</span>
-
-          <div v-if="product.sale_price > 0">
-            <span class="sale_price">{{formatPrice(product.price,'default')}}</span>
-            <span class="price">{{formatPrice(product.sale_price,'default')}}</span>
-          </div>
-          <div v-else>
-            <span class="price">{{formatPrice(product.price,'default')}}</span>
-          </div>
+      <div class="pa-3 list_con">
+        <div class="name">
+          {{ product.product_name }}
+          <v-chip
+            v-if="product.sale_price > 0"
+            class="ma-2"
+            color="light-blue darken-3"
+            text-color="white"
+            >SALE</v-chip
+          >
+          <v-chip
+            v-if="product.sold_out_yn == 'Y'"
+            class="ma-2"
+            color="red darken-2"
+            text-color="white"
+            >SOLD OUT</v-chip
+          >
         </div>
-      </v-card>
 
- 
+        <!-- <span class="d-inline-block text-truncate" style="max-width: 60vw">{{
+          product.desc
+        }}</span> -->
+
+        <div v-if="product.sale_price > 0">
+          <span class="sale_price">{{
+            formatPrice(product.price, "default")
+          }}</span>
+          <span class="price">{{
+            formatPrice(product.sale_price, "default")
+          }}</span>
+        </div>
+        <div v-else>
+          <span class="price">{{ formatPrice(product.price, "default") }}</span>
+        </div>
+      </div>
+    </v-card>
+
     <v-divider light></v-divider>
   </div>
 </template>
@@ -61,7 +67,7 @@ export default {
   data() {
     return {
       default_img: require("../assets/img/noimg.jpg"),
-      before_loading: false
+      before_loading: false,
     };
   },
   created() {
@@ -72,16 +78,16 @@ export default {
       this.$store.commit("s_product", product);
 
       var param = {
-        product_id: product.product_id
+        product_id: product.product_id,
       };
       let _this = this;
 
-      this.$store.dispatch("r_option", param).then(res => {
+      this.$store.dispatch("r_option", param).then((res) => {
         let param;
         param = {
           store_id: _this.$route.params.store_id,
           select_tab: _this.active,
-          table_id: _this.$store.getters.table_id
+          table_id: _this.$store.getters.table_id,
           // scrollx: _this.$parent.$parent.$parent.$refs.category_menu.scrollLeft
         };
 
@@ -92,8 +98,8 @@ export default {
     },
     handler() {
       this.before_loading = true;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -111,8 +117,8 @@ img {
 
 .sale_tag {
   position: absolute;
-  width: 6rem;
-  height: 6rem;
+  width: 4rem;
+  height: 4rem;
   top: 4%;
   left: 4%;
 }

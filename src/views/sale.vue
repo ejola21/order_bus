@@ -1,7 +1,7 @@
 <template>
   <div class="n_container">
     <v-tabs fixed-tabs v-model="tab" @change="tabChange">
-      <v-tab class="v_tab" href="#M">세일</v-tab>
+      <v-tab class="v_tab" href="#M">버스</v-tab>
       <v-tab class="v_tab" href="#R">리뷰</v-tab>
       <v-tab class="v_tab" href="#I">소개</v-tab>
     </v-tabs>
@@ -10,10 +10,7 @@
 
     <v-tabs-items v-model="tab">
       <v-tab-item value="M">
-        <v-tabs v-model="tab2"
-         show-arrows
-         background-color="blue lighten-5"
-        >
+        <v-tabs v-model="tab2" show-arrows background-color="blue lighten-5">
           <v-tab
             v-for="(category, index) in productCategories"
             :key="index"
@@ -116,12 +113,12 @@
           class="toggle_btn"
           @click="toggleClick"
         >
-          <span class="toggle_span">단골가게</span>
+          <span class="toggle_span">트레킹버스</span>
 
           <v-icon v-show="!companyShow">mdi-chevron-down</v-icon>
           <v-icon v-show="companyShow">mdi-chevron-up</v-icon>
           <span class="copyright"
-            >Copyright&copy;단골가게 All rigthts reserved.</span
+            >Copyright&copy;트레킹버스 All rigthts reserved.</span
           >
         </div>
         <div
@@ -130,7 +127,7 @@
         >
           <transition name="fade">
             <div v-show="companyShow" ref="animation" class="animation">
-              <div class="m_futter1">상호명 : (주)타임세일</div>
+              <div class="m_futter1">상호명 : (주)리스타트</div>
               <div class="m_futter2">대표이사 : 노정호</div>
               <div class="m_futter3">
                 사업자 등록번호 : 482-81-00235 | 통신판매업 :
@@ -141,17 +138,17 @@
                 대표번호 : 1544-3677 | 지사및가맹점모임 : 1522-5744
               </div>
               <div class="m_futter6">
-                주소 : 서울 강남구 강남대로198길 단골빌딩 단골가게
+                주소 : 서울 강남구 강남대로198길 단골빌딩 트레킹버스
               </div>
-              <div class="m_futter7">호스팅서비스제공자 : (주)타임세일</div>
+              <div class="m_futter7">호스팅서비스제공자 : (주)리스타트</div>
               <div class="m_futter8">
                 전자금융분쟁처리 Tel:1544-3677 / Fax : 02-565-1775
               </div>
             </div>
           </transition>
           <div class="m_futter9">
-            타임세일은 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서
-            타임세일은 상품거래 정보 및 거래에 대한 책임을 지지 않습니다.
+            리스타트은 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서
+            리스타트은 상품거래 정보 및 거래에 대한 책임을 지지 않습니다.
           </div>
           <br />
         </div>
@@ -300,15 +297,15 @@ export default {
     this.$store.commit("is_back", false);
     this.$store.commit("is_menu", true);
 
-    //console.log("tab",this.$route.params.tab);
+    console.log("created tab", this.$route.params);
 
     this.tab = this.home_tab;
     this.gb = this.$route.params.gb;
-    
+
     if (this.home_tab == "M") {
       var param = {
         store_id: this.$route.params.store_id,
-        table_id: this.$route.params.table_id,
+        table_id: this.$route.params.gb,
       };
       // console.log(this.$route.params)
       this.$store.commit("l_product", []);
@@ -471,6 +468,10 @@ export default {
 <style scoped>
 .theme--light.v-divider {
   display: none;
+}
+.v-tab {
+  font-size: 1.1rem;
+  font-weight: bold;
 }
 
 .store_info {

@@ -75,28 +75,28 @@
           class="toggle_btn"
           @click="toggleClick"
         >
-          <span class="toggle_span">단골가게</span>
+          <span class="toggle_span">트랙킹버스</span>
 
           <v-icon v-show="!companyShow">mdi-chevron-down</v-icon>
           <v-icon v-show="companyShow">mdi-chevron-up</v-icon>
-          <span class="copyright">Copyright&copy;단골가게 All rigthts reserved.</span>
+          <span class="copyright">Copyright&copy;트래킹버스 All rigthts reserved.</span>
         </div>
         <div class="m_futter" v-if="store.order_yn == 'Y'  || store.pay_yn == 'Y'">
           <transition name="fade">
             <div v-show="companyShow" ref="animation" class="animation">
-              <div class="m_futter1">상호명 : (주)타임세일</div>
+              <div class="m_futter1">상호명 : (주)리스타트</div>
               <div class="m_futter2">대표이사 : 노정호</div>
               <div class="m_futter3">사업자 등록번호 : 482-81-00235 | 통신판매업 : 2018-서울강남-00189</div>
               <div class="m_futter4">메일 : help@gmail.co.kr</div>
               <div class="m_futter5">대표번호 : 1544-3677 | 지사및가맹점모임 : 1522-5744</div>
-              <div class="m_futter6">주소 : 서울 강남구 강남대로198길 단골빌딩 단골가게</div>
-              <div class="m_futter7">호스팅서비스제공자 : (주)타임세일</div>
+              <div class="m_futter6">주소 : 서울 강남구 강남대로198길 단골빌딩 트레킹버스</div>
+              <div class="m_futter7">호스팅서비스제공자 : (주)리스타트</div>
               <div class="m_futter8">전자금융분쟁처리 Tel:1544-3677 / Fax : 02-565-1775</div>
             </div>
           </transition>
           <div
             class="m_futter9"
-          >타임세일은 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서 타임세일은 상품거래 정보 및 거래에 대한 책임을 지지 않습니다.</div>
+          >리스타트은 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서 리스타트은 상품거래 정보 및 거래에 대한 책임을 지지 않습니다.</div>
           <br />
         </div>
       </v-tab-item>

@@ -2,7 +2,7 @@
   <defs>
     <style>
       .cls-1 {
-        clip-path: url(#clip-주문현황X);
+        clip-path: url(#clip-예약현황X);
       }
 
       .cls-2 {
@@ -104,13 +104,13 @@
       <feComposite operator="in" in2="blur-7"/>
       <feComposite in="SourceGraphic"/>
     </filter>
-    <clipPath id="clip-주문현황X">
+    <clipPath id="clip-예약현황X">
       <rect width="396" height="396"/>
     </clipPath>
   </defs>
-  <g id="주문현황X" class="cls-1">
+  <g id="예약현황X" class="cls-1">
     <g id="그룹_669" data-name="그룹 669" transform="translate(-177 -180)">
-      <text id="최근_주문내역이_없습니다" data-name="최근 주문내역이 없습니다" class="cls-2" transform="translate(375 556)"><tspan x="-155.55" y="0">최근 주문내역이 없습니다</tspan></text>
+      <text id="최근_예약내역이_없습니다" data-name="최근 예약내역이 없습니다" class="cls-2" transform="translate(375 556)"><tspan x="-155.55" y="0">최근 예약내역이 없습니다</tspan></text>
       <path id="패스_116" data-name="패스 116" class="cls-3" d="M164.666,146.639V17.76c0-5.513-4.1-8.648-9.631-8.648H25.054c-5.513,0-10.006,3.135-10.006,8.648V197.742c0,5.513,7.021,12.751,12.534,12.751h79.126" transform="translate(274.319 271.465)"/>
       <path id="패스_117" data-name="패스 117" class="cls-4" d="M119.484,80.751a42.77,42.77,0,1,0-42.762,42.785,42.763,42.763,0,0,0,42.762-42.785" transform="translate(345.417 380.115)"/>
       <ellipse id="타원_42" data-name="타원 42" class="cls-3" cx="42.77" cy="42.77" rx="42.77" ry="42.77" transform="translate(379.361 418.096)"/>

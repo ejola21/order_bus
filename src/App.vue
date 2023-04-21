@@ -2,7 +2,12 @@
   <v-app>
     <!-- 사이드 메뉴  -->
 
-    <v-navigation-drawer v-model="drawer" :clipped="$vuetify.breakpoint.lgAndUp" right app>
+    <v-navigation-drawer
+      v-model="drawer"
+      :clipped="$vuetify.breakpoint.lgAndUp"
+      right
+      app
+    >
       <template v-slot:prepend>
         <v-list-item two-line>
           <v-list-item-avartar>
@@ -14,7 +19,7 @@
           </v-list-item-avatar> -->
 
           <v-list-item-content>
-            <v-list-item-title>{{store.store_name}}</v-list-item-title>
+            <v-list-item-title>{{ store.store_name }}</v-list-item-title>
             <!-- <v-list-item-subtitle>고객님 반가워요!</v-list-item-subtitle> -->
           </v-list-item-content>
         </v-list-item>
@@ -23,21 +28,21 @@
       <v-divider></v-divider>
 
       <v-list dense>
-        <v-list-item link @click="bellClick">
+        <!-- <v-list-item link @click="storeClick">
           <v-list-item-action>
             <v-icon>mdi-store-outline</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>가게 정보</v-list-item-title>
+            <v-list-item-title>산악회정보</v-list-item-title>
           </v-list-item-content>
-        </v-list-item>
+        </v-list-item> -->
 
-        <v-list-item link @click="menuClick">
+        <v-list-item link @click="bus1Click">
           <v-list-item-action>
             <v-icon>mdi-silverware-variant</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>메뉴</v-list-item-title>
+            <v-list-item-title>버스예약</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
@@ -55,41 +60,39 @@
             <v-icon>mdi-folder-account-outline</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>주문 현황</v-list-item-title>
+            <v-list-item-title>예약 현황</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
-        <v-list-item link @click="bellClick">
+        <!-- <v-list-item link @click="bellClick">
           <v-list-item-action>
             <v-icon>mdi-comment-text-multiple-outline</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>리 뷰</v-list-item-title>
           </v-list-item-content>
-        </v-list-item>
+        </v-list-item> -->
 
-        <v-list-item link @click="bellClick">
+        <!-- <v-list-item link @click="bellClick">
           <v-list-item-action>
             <v-icon>mdi-bell-ring-outline</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>요청 메시지</v-list-item-title>
           </v-list-item-content>
-        </v-list-item>
+        </v-list-item> -->
       </v-list>
     </v-navigation-drawer>
 
     <!-- 타이틀바 -->
-    <v-app-bar
-      color="primary"
-      app absolute
-      dark
-    >
+    <v-app-bar color="primary" app absolute dark>
       <v-btn v-show="is_back" @click="backNav" icon color="white">
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
       <v-spacer />
-      <v-toolbar-title class="store_name">{{store.store_name}}</v-toolbar-title>
+      <v-toolbar-title class="store_name">{{
+        store.store_name
+      }}</v-toolbar-title>
       <v-spacer />
 
       <!-- <v-btn icon>
@@ -132,7 +135,7 @@
           </v-btn>
 
           <v-btn @click="statusClick">
-            <span>주문현황</span>
+            <span>예약현황</span>
             <v-icon color="#757575">mdi-comment-text-outline</v-icon>
           </v-btn>
 
@@ -155,10 +158,14 @@
       v-model="toast.toast"
       :timeout="toast.timeout"
       @close="hideToast"
-    >{{toast.toast_msg}}</v-snackbar>
+      >{{ toast.toast_msg }}</v-snackbar
+    >
 
     <v-overlay :value="loading">
-      <v-progress-circular :indeterminate="loading" color="white"></v-progress-circular>
+      <v-progress-circular
+        :indeterminate="loading"
+        color="white"
+      ></v-progress-circular>
     </v-overlay>
 
     <!-- [Vue warn]: Do not use built-in or reserved HTML elements as component id: circle 에러 원인 아래꺼대문임-->
@@ -214,7 +221,7 @@ export default {
     },
     is_select_store() {
       return this.$store.getters.is_select_store;
-    }
+    },
   },
   data: () => ({
     dialog: false,
@@ -224,14 +231,14 @@ export default {
     login_name: "",
     title_name: "",
     activeBtn: "home",
-    d_img: require("./assets/img/no_img1.jpeg")
+    d_img: require("./assets/img/no_img1.jpeg"),
   }),
   mounted() {
     this.$store.commit("loading", false);
 
     this.$store.commit("toast", {
       toast: false,
-      toast_msg: ""
+      toast_msg: "",
     });
   },
   methods: {
@@ -263,9 +270,9 @@ export default {
         table_id: "",
         select_tab: "",
         scrollx: 0,
-        scrolly: 0
+        scrolly: 0,
       });
-      this.$router.push("/menu/" + this.store.store_id + "/" + this.table_id);
+      this.$router.push("/sale/" + this.store.store_id + "/" + this.table_id);
     },
     basketClick() {
       this.$router.push("/basket_all/");
@@ -275,8 +282,14 @@ export default {
         "/group/" + this.store.group_code + "/" + this.table_id
       );
     },
-    menuClick() {
-      this.$router.push("/menu/" + this.store.store_id + "/" + this.table_id);
+    bus1Click() {
+      this.$router.push("/sale/" + this.store.store_id + "/1");
+    },
+    bus2Click() {
+      this.$router.push("/sale/" + this.store.store_id + "/2");
+    },
+    storeClick() {
+      this.$router.push("/sale/" + this.store.store_id + "/3");
     },
     payClick() {
       this.$router.push("/pay");
@@ -293,8 +306,8 @@ export default {
     myCouponClick() {
       this.open = !this.open;
       this.$router.push("/my_coupon");
-    }
-  }
+    },
+  },
 };
 </script>
 

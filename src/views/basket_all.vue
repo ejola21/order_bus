@@ -1,140 +1,267 @@
 <template>
-<div ref="basket" v-show="is_visible" class="basket">
-  <div class="basket-drag" :class="{'default_bottom_padding' : select_tab == 'default' && store.in_yn == 'N'}" :style="{maxHeight : windowHeight, height: windowHeight}">
-    <div v-if="order_product_length > 0">
-      <div  v-for="(product, index) in order_product" :key="index">
-        <basket-item :item="product"></basket-item>
-      </div>
-        
-      
-      <div class="demo-paper add_menu_btn" @click="addOrderClick">
-      
-        <span><v-btn large class="menu_add">메뉴 추가</v-btn></span>
-      </div>
- 
-      <div class="margin_top price_bottom_delivery_n">
-
-        <div v-show="my_coupon.length > 0 || select_tab == 'delivery' || time_sale" class="price_div">
-          <span>총금액</span>
-          <span class="right_zero">{{formatPrice(cost, 'default')}}&nbsp;원</span>
+  <div ref="basket" v-show="is_visible" class="basket">
+    <div
+      class="basket-drag"
+      :class="{
+        default_bottom_padding: select_tab == 'default' && store.in_yn == 'N',
+      }"
+      :style="{ maxHeight: windowHeight, height: windowHeight }"
+    >
+      <div v-if="order_product_length > 0">
+        <div v-for="(product, index) in order_product" :key="index">
+          <basket-item :item="product"></basket-item>
         </div>
 
-        <div v-show="my_coupon.length > 0" class="select_box">
-          <div class="coupon_select_title">쿠폰 선택</div>
-          <v-select  v-model="coupon_select" @change="coupon_use"  solo label="선택하세요"
-             :items="my_coupon"  item-text="title" item-disabled ="disabled" item-value="coupon_id" >
-          </v-select>
+        <div class="demo-paper add_menu_btn" @click="addOrderClick">
+          <span><v-btn large class="menu_add">예약 추가</v-btn></span>
         </div>
-       
-        <div v-if="time_sale" class="price_div bottom_margin" :class="{ 'top_margin': my_coupon.length === 0}">
-          <span>타임할인</span>
-          <span class="right_zero">-{{ formatPrice( (total_sale), 'default')}} 원</span>
-        </div>
-        <div v-if="select_tab == 'delivery'" class="price_div bottom_margin" :class="{ 'top_margin': my_coupon.length === 0}">
-          <span v-if="store.delivery_amt != 0">배달비</span>
-          <span v-else>배달 최소 금액</span>
-          <span v-if="store.delivery_amt != 0" class="right_zero">+{{formatPrice(store.delivery_amt, 'default')}} 원</span>
-          <span v-else class="right_zero">{{formatPrice(store.min_delivery_amt, 'default')}} 원</span>
-        </div>
-        <div v-if="my_coupon.length > 0 || select_tab == 'delivery' || time_sale" class="default_padding" :class="{ 'padding_top' : my_coupon.length === 0 }">
+
+        <div class="margin_top price_bottom_delivery_n">
+          <div
+            v-show="
+              my_coupon.length > 0 || select_tab == 'delivery' || time_sale
+            "
+            class="price_div"
+          >
+            <span>총금액</span>
+            <span class="right_zero"
+              >{{ formatPrice(cost, "default") }}&nbsp;원</span
+            >
+          </div>
+
+          <div v-show="my_coupon.length > 0" class="select_box">
+            <div class="coupon_select_title">쿠폰 선택</div>
+            <v-select
+              v-model="coupon_select"
+              @change="coupon_use"
+              solo
+              label="선택하세요"
+              :items="my_coupon"
+              item-text="title"
+              item-disabled="disabled"
+              item-value="coupon_id"
+            >
+            </v-select>
+          </div>
+
+          <div
+            v-if="time_sale"
+            class="price_div bottom_margin"
+            :class="{ top_margin: my_coupon.length === 0 }"
+          >
+            <span>타임할인</span>
+            <span class="right_zero"
+              >-{{ formatPrice(total_sale, "default") }} 원</span
+            >
+          </div>
+          <div
+            v-if="select_tab == 'delivery'"
+            class="price_div bottom_margin"
+            :class="{ top_margin: my_coupon.length === 0 }"
+          >
+            <span v-if="store.delivery_amt != 0">배달비</span>
+            <span v-else>배달 최소 금액</span>
+            <span v-if="store.delivery_amt != 0" class="right_zero"
+              >+{{ formatPrice(store.delivery_amt, "default") }} 원</span
+            >
+            <span v-else class="right_zero"
+              >{{ formatPrice(store.min_delivery_amt, "default") }} 원</span
+            >
+          </div>
+          <div
+            v-if="my_coupon.length > 0 || select_tab == 'delivery' || time_sale"
+            class="default_padding"
+            :class="{ padding_top: my_coupon.length === 0 }"
+          >
             <v-divider></v-divider>
+          </div>
+          <div class="total_price_div">
+            <span class="total_price_title">결제금액</span>
+            <span class="total_price_span"
+              >{{ formatPrice(total_price, "default") }}&nbsp;원</span
+            >
+          </div>
         </div>
-        <div class="total_price_div">
-          <span class="total_price_title">결제금액</span>
-          <span class="total_price_span">{{formatPrice(total_price, 'default')}}&nbsp;원</span>
+        <div>
+          <div class="parent_select_tab">
+            <div
+              class="select_tab"
+              v-if="
+                (store.one_yn != 'Y' && table_id != 998 && table_id != 0) ||
+                  (store.one0_yn != 'Y' && (table_id == 0 || table_id == 998))
+              "
+            >
+              <div
+                v-if="store.in_yn == 'Y' && table_id != 998 && table_id != 0"
+                class="default_tab"
+                :class="[
+                  { select_order: select_tab == 'default' },
+                  { no_select_border: select_tab != 'default' },
+                  {
+                    select_border_right:
+                      select_tab == 'default' && select_tab_cnt > 0,
+                  },
+                  { three_font: select_tab_cnt == 2 && store.in_yn == 'Y' },
+                  { other_font: select_tab_cnt < 2 || store.in_yn != 'Y' },
+                ]"
+                @click="tab_click('default')"
+              >
+                <img
+                  :src="
+                    select_tab == 'default'
+                      ? default_select_img
+                      : default_nselect_img
+                  "
+                  width="25rem"
+                />
+                매장예약
+              </div>
+              <div
+                class="delivery_tab"
+                v-if="store.packing_yn == 'Y'"
+                :class="[
+                  { select_order: select_tab == 'packing' },
+                  { no_select_border: select_tab != 'packing' },
+                  {
+                    select_border_all:
+                      select_tab == 'packing' &&
+                      this.packing > 0 &&
+                      table_id != 998 &&
+                      table_id != 0 &&
+                      select_tab_cnt != 1,
+                  },
+                  {
+                    select_border_right:
+                      select_tab == 'packing' &&
+                      packing > 0 &&
+                      (table_id == 998 || table_id == 0) &&
+                      select_tab_cnt > 1,
+                  },
+                  {
+                    select_border_right:
+                      select_tab == 'packing' &&
+                      packing == 0 &&
+                      select_tab_cnt > 1,
+                  },
+                  {
+                    select_border_left:
+                      select_tab == 'packing' &&
+                      packing == 1 &&
+                      table_id != 998 &&
+                      table_id != 0,
+                  },
+                  { three_font: select_tab_cnt == 2 && store.in_yn == 'Y' },
+                  { other_font: select_tab_cnt < 2 || store.in_yn != 'Y' },
+                ]"
+                @click="tab_click('packing')"
+              >
+                <img
+                  :src="
+                    select_tab == 'packing'
+                      ? packing_select_img
+                      : packing_nselect_img
+                  "
+                  width="25rem"
+                />
+                포장예약
+              </div>
+              <div
+                class="delivery_tab"
+                v-if="store.delivery_yn == 'Y'"
+                :class="[
+                  { select_order: select_tab == 'delivery' },
+                  { no_select_border: select_tab != 'delivery' },
+                  {
+                    select_border_left:
+                      select_tab == 'delivery' && this.select_tab_cnt == 2,
+                  },
+                  {
+                    select_border_left:
+                      select_tab == 'delivery' &&
+                      delivery == 1 &&
+                      table_id != 998 &&
+                      table_id != 0,
+                  },
+                  { three_font: select_tab_cnt == 2 && store.in_yn == 'Y' },
+                  { other_font: select_tab_cnt < 2 || store.in_yn != 'Y' },
+                ]"
+                @click="tab_click('delivery')"
+              >
+                <img
+                  :src="
+                    select_tab == 'delivery'
+                      ? delivery_select_img
+                      : delivery_nselect_img
+                  "
+                  width="25rem"
+                />
+                배달예약
+              </div>
+            </div>
+          </div>
         </div>
-
-
+        <packing
+          :class="[
+            {
+              border_top:
+                store.one_yn == 'Y' && table_id != 998 && table_id != 0,
+            },
+            {
+              border_top:
+                store.one0_yn == 'Y' && (table_id == 0 || table_id == 998),
+            },
+          ]"
+          v-if="select_tab == 'packing'"
+        />
+        <delivery
+          :class="[
+            {
+              border_top:
+                store.one_yn == 'Y' && table_id != 998 && table_id != 0,
+            },
+            {
+              border_top:
+                store.one0_yn == 'Y' && (table_id == 0 || table_id == 998),
+            },
+          ]"
+          v-else-if="select_tab == 'delivery'"
+        />
+        <normal-order
+          :class="[
+            {
+              border_top:
+                store.one_yn == 'Y' && table_id != 998 && table_id != 0,
+            },
+            {
+              border_top:
+                store.one0_yn == 'Y' && (table_id == 0 || table_id == 998),
+            },
+          ]"
+          v-else-if="select_tab == 'default'"
+        />
       </div>
-      <div>
-        <div class="parent_select_tab">
-          <div class="select_tab" v-if="(store.one_yn != 'Y' && table_id != 998 && table_id != 0) || (store.one0_yn != 'Y' && (table_id == 0 || table_id == 998))">
-            <div v-if="store.in_yn == 'Y' && (table_id != 998 && table_id != 0)" class="default_tab"
-            :class="[
-              {select_order : select_tab == 'default'}, {no_select_border : select_tab != 'default'},
-              {select_border_right: select_tab == 'default' && select_tab_cnt > 0},
-              { three_font : select_tab_cnt == 2 && store.in_yn == 'Y' },
-              { other_font : select_tab_cnt < 2 || store.in_yn != 'Y'}
-            ]"
-            @click="tab_click('default')">
-              <img :src="select_tab == 'default'? default_select_img : default_nselect_img" width="25rem">
-              매장주문
-            </div>
-            <div class="delivery_tab" v-if="store.packing_yn == 'Y'"
-            :class="[
-              {select_order : select_tab == 'packing'}, {no_select_border : select_tab != 'packing'},
-              {select_border_all: select_tab == 'packing' && this.packing > 0 && table_id != 998 && table_id != 0 && select_tab_cnt != 1 },
-              {select_border_right: select_tab == 'packing' && packing > 0 && (table_id == 998 || table_id == 0) && select_tab_cnt > 1 },
-              {select_border_right: select_tab == 'packing' && packing == 0 && select_tab_cnt > 1},
-              {select_border_left: select_tab == 'packing' && packing == 1 && table_id != 998 && table_id != 0},
-              { three_font : select_tab_cnt == 2 && store.in_yn == 'Y' }, { other_font : select_tab_cnt < 2 || store.in_yn != 'Y'}
-            ]"
-            @click="tab_click('packing')">
-              <img :src="select_tab == 'packing'? packing_select_img : packing_nselect_img" width="25rem">
-              포장주문
-            </div>
-            <div class="delivery_tab" v-if="store.delivery_yn == 'Y'"
-            :class="[
-              {select_order : select_tab == 'delivery'},
-              {no_select_border : select_tab != 'delivery'},
-              {select_border_left: select_tab == 'delivery' && this.select_tab_cnt == 2},
-              {select_border_left: select_tab == 'delivery' && delivery == 1 && table_id != 998 && table_id != 0},
-              { three_font : select_tab_cnt == 2 && store.in_yn == 'Y' },
-              { other_font : select_tab_cnt < 2 || store.in_yn != 'Y'}
-            ]"
+      <div v-else class="no_content">
+        <div class="error-mark-wrap">
+          <div class="demo-paper add_menu_btn" @click="addOrderClick">
+            <span><v-btn large>예약 추가</v-btn></span>
+          </div>
 
-            @click="tab_click('delivery')">
-              <img :src="select_tab == 'delivery'? delivery_select_img : delivery_nselect_img" width="25rem">
-              배달주문
+          <div class="empty_basket">
+            <img src="../assets/img/empty_basket.png" width="55%" />
+            <div class="tit">장바구니가 비어있습니다.</div>
+            <div class="con" style="font-size:1.1rem;">
+              상품을 골라 한 번에 결제해보세요 ^^
             </div>
           </div>
         </div>
       </div>
-      <packing
-      :class="
-          [
-            {border_top : store.one_yn == 'Y' && table_id != 998 && table_id != 0 },
-            {border_top : store.one0_yn == 'Y' && (table_id == 0 || table_id == 998)}
-          ]"
-          v-if="select_tab == 'packing'"/>
-      <delivery
-      :class="
-          [
-            {border_top : store.one_yn == 'Y' && table_id != 998 && table_id != 0 },
-            {border_top : store.one0_yn == 'Y' && (table_id == 0 || table_id == 998)}
-          ]"
-      v-else-if="select_tab == 'delivery'"/>
-      <normal-order
-      :class="
-          [
-            {border_top : store.one_yn == 'Y' && table_id != 998 && table_id != 0 },
-            {border_top : store.one0_yn == 'Y' && (table_id == 0 || table_id == 998)}
-          ]"
-          v-else-if="select_tab == 'default'"/>
-    </div>
-    <div v-else class="no_content">
-      <div class="error-mark-wrap">
-      
-        <div class="demo-paper add_menu_btn" @click="addOrderClick">
-          <span><v-btn large>메뉴 추가</v-btn></span>
-        </div>
-      
-      
-        <div class="empty_basket">
-          <img src="../assets/img/empty_basket.png" width="55%"/>
-        <div class="tit">장바구니가 비어있습니다.</div>
-        <div class="con" style="font-size:1.1rem;">상품을 골라 한 번에 결제해보세요 ^^</div>
-        
-      </div>
-      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
 /* eslint-disable */
- import basketItem from "../components/basketItem";
+import basketItem from "../components/basketItem";
 // import orderBtn from '../components/orderBtn';
 // import snsLogin from '../components/snsLogin';
 
@@ -147,7 +274,7 @@ export default {
     basketItem,
     packing,
     delivery,
-    normalOrder
+    normalOrder,
   },
   computed: {
     is_visible() {
@@ -182,7 +309,7 @@ export default {
       this.total_sale = 0;
       _.forEach(this.order_product, function(value, key) {
         //console.log('value : ', value, value.price, key);
-        
+
         if (value.product.sale_gb === "T" && _this.select_tab === "packing") {
           if (value.product.sale_st_time1 !== "") {
             chk_time_sale = _this.timeCalc(
@@ -221,12 +348,11 @@ export default {
             st_time1: value.product.sale_st_time1,
             ed_time1: value.product.sale_ed_time1,
             st_time2: value.product.sale_st_time2,
-            ed_time2: value.product.sale_ed_time2
+            ed_time2: value.product.sale_ed_time2,
           };
           if (parseInt(value.price) > parseInt(value.product.sale_time_price)) {
             chk_cnt++;
           }
-          
         }
 
         _price = _price + parseInt(value.price);
@@ -251,7 +377,6 @@ export default {
 
       this.$store.commit("sum_price", _price);
 
-
       return _price;
     },
     cost() {
@@ -271,79 +396,74 @@ export default {
     basket_tab() {
       return this.$store.getters.basket_tab;
     },
-   
+
     coupon_obj() {
       return this.$store.getters.coupon_obj;
     },
     l_product() {
       return this.$store.getters.l_product;
     },
-    my_coupon() 
-    {
-      
-      let _my_coupon =  _.filter(this.$store.getters.l_user_coupon, {
-        gb: "Y"
+    my_coupon() {
+      let _my_coupon = _.filter(this.$store.getters.l_user_coupon, {
+        gb: "Y",
       });
 
       console.log("my_coupon", _my_coupon);
       let _this = this;
 
       _.forEach(_my_coupon, function(value, key) {
-        
-        value.disabled  = (_this.cost > value.target_amt) ? false : true;
+        value.disabled = _this.cost > value.target_amt ? false : true;
 
         if (value.coupon_type === "P") {
-
           if (key.coupon_id === _this.coupon_select) {
-            value.title =   _this.formatPrice(value.amt,"");
-          }
-          else
-          {
-            value.title =  _this.formatPrice(value.amt,"")+ " 이상 )";
+            value.title = _this.formatPrice(value.amt, "");
+          } else {
+            value.title = _this.formatPrice(value.amt, "") + " 이상 )";
           }
 
-          value.title =   _this.formatPrice(value.amt,"");
-        }
-        else if (value.coupon_type === "R") {
-          
+          value.title = _this.formatPrice(value.amt, "");
+        } else if (value.coupon_type === "R") {
           if (key.coupon_id === _this.coupon_select) {
-            value.title =  value.amt + "% 할인";
+            value.title = value.amt + "% 할인";
+          } else {
+            value.title =
+              value.amt +
+              "% 할인 (" +
+              _this.formatPrice(value.target_amt, "") +
+              " 이상 )";
           }
-          else
-          {
-            value.title =  value.amt +  "% 할인 (" + _this.formatPrice(value.target_amt,"") + " 이상 )";
-          }
-        }
-        else  
-        {
-          if (key.coupon_id != _this.coupon_select) 
-          {
-            value.title =  value.amt +  " (" + _this.formatPrice(value.target_amt,"") + " 이상 )";
+        } else {
+          if (key.coupon_id != _this.coupon_select) {
+            value.title =
+              value.amt +
+              " (" +
+              _this.formatPrice(value.target_amt, "") +
+              " 이상 )";
           }
         }
       });
 
-      if ( _my_coupon.length > 0 )
+      if (_my_coupon.length > 0)
         _my_coupon.unshift({
-          amt:"",
-          coupon_id:"0",
-          coupon_type:"",
-          ed_dt:"",
-          gb:"",
-          st_dt:"",
-          target_amt:"",
-          title:"선택하세요",
-          disabled : false,
-          user_id:""});
+          amt: "",
+          coupon_id: "0",
+          coupon_type: "",
+          ed_dt: "",
+          gb: "",
+          st_dt: "",
+          target_amt: "",
+          title: "선택하세요",
+          disabled: false,
+          user_id: "",
+        });
 
       return _my_coupon;
-      
     },
     time_sale_confirm() {
       return _.filter(this.l_product, {
-        sale_gb: "T"
+        sale_gb: "T",
       });
-    }
+    },
   },
   data() {
     return {
@@ -363,7 +483,7 @@ export default {
         title: "",
         desc: "",
         result: false,
-        length: 0
+        length: 0,
       },
       select_tab: "default",
       pay: false,
@@ -412,12 +532,10 @@ export default {
       }
     }
 
-    if (this.packing !== -1 && this.basket_tab === "packing" ) {
+    if (this.packing !== -1 && this.basket_tab === "packing") {
       this.select_tab = "packing";
       this.$store.commit("basket_tab", "packing");
-    }
-     else if (this.delivery !== false && this.basket_tab === "delivery" ) 
-    {
+    } else if (this.delivery !== false && this.basket_tab === "delivery") {
       this.select_tab = "delivery";
       this.$store.commit("basket_tab", "delivery");
     } else if (this.table_id == 998) {
@@ -458,9 +576,8 @@ export default {
     this.$store.commit("is_popup", {
       is_popup: false,
       title: "",
-      desc: ""
+      desc: "",
     });
-
 
     if (this.$refs.basket.clientHeight < window.innerHeight) {
       this.windowHeight = window.innerHeight - 56;
@@ -483,13 +600,13 @@ export default {
 
     let params = {
       user_id: this.user_id,
-      store_id: this.store.store_id
+      store_id: this.store.store_id,
     };
 
-    this.$store.dispatch("l_user_coupon", params).then(res => {
+    this.$store.dispatch("l_user_coupon", params).then((res) => {
       //this.coupon_init();
     });
-    
+
     this.coupon_select = "0";
     this.$store.commit("coupon_obj", "");
   },
@@ -513,10 +630,8 @@ export default {
       this.$router.push("/address");
     },
     coupon_use() {
-      
       this.$nextTick(() => {
-
-        console.log("coupon_use",this.coupon_select);
+        console.log("coupon_use", this.coupon_select);
 
         let cou = this.getCoupon(this.coupon_select);
 
@@ -532,17 +647,14 @@ export default {
     },
     getCoupon(id) {
       return _.filter(this.my_coupon, {
-        coupon_id: id
+        coupon_id: id,
       });
     },
-    
-  }
-
+  },
 };
 </script>
 
-<style media="screen">
-</style>
+<style media="screen"></style>
 
 <style scoped>
 .basket {
@@ -565,15 +677,15 @@ export default {
   padding-bottom: 0.5%;
 }
 .theme--light.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
-    background-color: #043474;
-    width: 100%;
+  background-color: #043474;
+  width: 100%;
 }
 .v-btn.v-size--default {
-    font-size: 1.3rem;
-    font-weight: bold;
+  font-size: 1.3rem;
+  font-weight: bold;
 }
 .theme--light.v-btn {
-    color: #ffffff;
+  color: #ffffff;
 }
 .add_menu_btn,
 .coupon_list {
@@ -686,9 +798,9 @@ export default {
   z-index: 5;
   /* border-bottom: 3px solid #175ab7; */
 }
-.border_top {
+/* .border_top {
   border-top: 3px solid #175ab7;
-}
+} */
 .delivery_tab,
 .default_tab {
   flex: 1;
@@ -844,7 +956,7 @@ export default {
   font-size: 1.2rem;
 }
 .v-btn.v-size--large {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 .tit {
   font-weight: bold;

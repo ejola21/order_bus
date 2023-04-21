@@ -2,7 +2,7 @@
   <div>
     <!-- <div class="sub_top">
         <div class="back_btn"><a href="javascript:void(0);"><v-icon>mdi-arrow-left</v-icon></a></div>
-        <div class="tit">주문현황</div>
+        <div class="tit">예약현황</div>
     </div> -->
 
   <popup-cancel @cancel_req="cancel_req"/>
@@ -12,8 +12,8 @@
       
       <div class="text-center">
         <img src="../assets/img/order_none.png" width="55%"/>
-        <div class="tit">주문현황이 없습니다.</div>
-        <div class="con">주문 후, 주문현황을 확인해보세요 ^^</div>
+        <div class="tit">예약현황이 없습니다.</div>
+        <div class="con">예약 후, 예약현황을 확인해보세요 ^^</div>
       </div>
       
     </div v-else>
@@ -34,21 +34,21 @@
         <v-stepper :value="parseInt(status.idx)+1" vertical non-linear light class="ml-8 pl-12 pt-0 text-center">
 
           <v-stepper-step :complete="status.idx > 0" step="1">
-            {{ status.money_yn == 'Y' ? '결제 완료' : '주문 완료' }}   {{ status.time1}}
-            <small class="mt-2"> 고객님 주문이 접수되었습니다</small>
+            {{ status.money_yn == 'Y' ? '결제 완료' : '예약 완료' }}   {{ status.time1}}
+            <small class="mt-2"> 고객님 예약이 접수되었습니다</small>
           </v-stepper-step>
 
           <v-stepper-content step="1"></v-stepper-content>
           
           <v-stepper-step :complete="status.idx > 1" step="2">
             접수 완료 {{ status.time2}}
-            <small  class="mt-2"> 고객님 주문이 조리중입니다.</small>
+            <small  class="mt-2"> 고객님 예약이 조리중입니다.</small>
           </v-stepper-step>
           <v-stepper-content step="2"></v-stepper-content>
 
           <v-stepper-step :complete="status.idx > 2" step="3">
              {{ status.delivery_yn == 'Y' ? '배달 출발' : ( status.idx === '3' ? '픽업 완료' : '처리 완료' ) }}   {{ status.time3}}
-            <small  class="mt-2">고객님 주문 찾아가세요</small>
+            <small  class="mt-2">고객님 예약 찾아가세요</small>
           </v-stepper-step>
           <v-stepper-content step="3"></v-stepper-content>
         </v-stepper>
@@ -64,7 +64,7 @@
 
         <div class="bottom_box">
           <div class="price_box">
-            <span>총 주문 금액</span>
+            <span>총 예약 금액</span>
             <div class="price"> {{formatPrice(status.price, 'default')}} 원</div>
           </div>
         </div>
@@ -72,8 +72,8 @@
 
 
         <v-btn v-if="status.cancel_status == null" width ="92%" large color="primary" class="blue_btn" @click="cancel(status.order_no, status.cancel_status)" >취소 요청</v-btn>
-        <v-btn v-else-if="status.cancel_status == '주문취소 요청중'"  width ="92%"  large color="#333" class="blue_btn">취소 요청중</v-btn>
-        <v-btn v-else-if="status.cancel_status == '주문취소 요청거부'"  width ="92%"  large color="#B71C1C" class="blue_btn" @click="cancel_refuse" >취소 요청 거부</v-btn>
+        <v-btn v-else-if="status.cancel_status == '예약취소 요청중'"  width ="92%"  large color="#333" class="blue_btn">취소 요청중</v-btn>
+        <v-btn v-else-if="status.cancel_status == '예약취소 요청거부'"  width ="92%"  large color="#B71C1C" class="blue_btn" @click="cancel_refuse" >취소 요청 거부</v-btn>
         <v-btn v-else width ="92%"  large color="#03a9f4" class="blue_btn">취소 요청 완료</v-btn>
  
 
@@ -147,7 +147,7 @@ export default {
     this.$store.commit("is_back", false);
     this.$store.commit("is_select_store", false);
     if (!this.is_home) {
-      this.$store.commit("title", "주문 현황");
+      this.$store.commit("title", "예약 현황");
     }
     
     this.$store.commit("is_menu", true);
@@ -176,7 +176,7 @@ export default {
   },
   methods: {
     refresh(order_no) {
-      // order_no 의 주문만 조회
+      // order_no 의 예약만 조회
       var param = {
         order_no: order_no
       };
@@ -198,7 +198,7 @@ export default {
       });
     },
     refresh_detail(user_id) {
-      // user_id의 주문 전체 조회
+      // user_id의 예약 전체 조회
       var param = {
         store_id: this.store.store_id,
         user_id: user_id
@@ -238,10 +238,10 @@ export default {
         // console.log('res', res);
         if (res[0].result == "SUCCESS") {
           this.showToast(
-            "주문 취소가 요청 되었습니다.잠시후에 새로고침을 하시면 결과를 볼수 있습니다."
+            "예약 취소가 요청 되었습니다.잠시후에 새로고침을 하시면 결과를 볼수 있습니다."
           );
           this.refresh_noshow(this.select_order_no);
-          //this.r_order_status_one.cancel_status = '주문취소 요청중';
+          //this.r_order_status_one.cancel_status = '예약취소 요청중';
         } else {
           this.$store.commit("loading", false);
           this.showToast(res[0].result);
@@ -253,7 +253,7 @@ export default {
       this.select_order_no = order_no;
 
       // var popup = {
-      //   'title': "주문 취소 요청",
+      //   'title': "예약 취소 요청",
       //   'desc': "정말로 취소를 하시겠습니까?",
       //   'btn1': true,
       //   'btn3': true,
@@ -262,7 +262,7 @@ export default {
       // this.$store.commit('popup', popup);
       this.$store.commit("is_popup", {
         is_popup: true,
-        title: "주문 취소요청",
+        title: "예약 취소요청",
         desc: "정말로 취소를 하시겠습니까?"
       });
     },

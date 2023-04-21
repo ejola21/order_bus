@@ -1,182 +1,183 @@
 <template lang="html">
-<div class="default-container">
-
-    <div v-if="store.pay_yn == 'Y'" class="pay_select">
-       <div class="pay_choice">
-        <v-badge v-if="user_agent_chk" content="1" circle color="#0954ba" badgeClass="badge_size">
-            <span class="pay_title">&nbsp;결제 수단 선택</span>
-        </v-badge>
-        <v-badge v-else content="1" circle color="#0954ba" badgeClass="badge_size_other">
-            <span class="pay_title">&nbsp;결제 수단 선택</span>
-        </v-badge>
-       </div>  
-        <div v-if="store.pay_yn == 'Y'" class="pay_check_prepayment">
-            <div v-if="store.pay_yn == 'Y' && store.order_yn == 'Y'" @click="prepayment_click">
-                <v-radio-group v-model="select_radio" hide-details>
-                  <v-radio name="pay_type1" value="선불" label="선불"></v-radio>
-                <!-- <mu-radio name="pay_type1" v-model="select_radio" labelClass="prepayment" label="선불" nativeValue="선불"/> -->
-                  <span :class="[{'prepayment_desc' : !user_agent}, {'mix_padding' : user_agent}]">&nbsp;&nbsp;(모바일로 미리 결제)</span>
-                </v-radio-group>
-            </div>
-            <div v-else-if="store.pay_yn == 'Y'">
-                <!-- <mu-radio name="pay_type" v-model="select_radio" labelClass="prepayment" label="선불" nativeValue="선불"/> -->
-                <!-- <span class="prepayment">선불</span>
-                <span :class="[{'prepayment_desc' : !user_agent}, {'mix_padding' : user_agent}]">&nbsp;&nbsp;모바일로 미리 결제</span> -->
-                <!-- :class="{'ios_span_padding_top' : !is_android}" -->
-            </div>
-            <!-- <order-btn v-show="select_radio == '0'" :phone="front_phone+back_phone"></order-btn> -->
-            <div v-if="store.store_id != 'dg500004'" class="btn_box" v-show="select_radio == '선불'">
-                <div class="card_pay" :class="{'select_pay' : select_pay == 0}" @click="default_card_click(0)">
-                    <img class="icon_img" :src="select_pay == 0 ? img_s_card : img_n_card" width="23px"/>
-                    <span>신용/체크/법인카드</span>
-                </div>
-                <div class="appcard_pay" :class="{'select_pay' : select_pay == 1}" @click="card_select">
-                    <img class="icon_img" :src="select_pay == 1 ? img_s_appcard : img_n_appcard" width="23rem"/>
-                    <!-- <span>&nbsp;앱카드</span><span v-show="select_card != ''" class="card_select">&nbsp;*{{select_card}}</span> -->
-                    <span>&nbsp;앱카드</span><span v-show="select_card != ''" class="card_select"></span>
-                </div>
-            </div>
-            <div v-else class="btn_box" v-show="select_radio == '선불'">
-                <div class="card_pay_full" :class="{'select_pay' : select_pay == 0}" @click="default_card_click(0)">
-                    <img class="icon_img" :src="select_pay == 0 ? img_s_card : img_n_card" width="23rem"/>
-                    <span>신용/체크/법인카드</span>
-                </div>
-            </div>
-            <div class="btn_box bottom_btn_box" v-if="is_android && store.store_id != 'dg500004'" v-show="select_radio == '선불'">
-                <div class="samsung_pay right_margin" :class="{'select_pay' : select_pay == 2}" @click="default_card_click(2)">
-                    <img class="sumsung_img" height="40rem" :src="select_pay == 2 ? img_s_samsung : img_n_samsung"/>
-                </div>
-                <div class="kakao_pay left_margin" :class="{'select_pay' : select_pay == 3}" @click="default_card_click(3)">
-                    <img class="icon_img" :src="select_pay == 3 ? img_s_kakao : img_n_kakao" width="23rem" height="16.42rem"/>
-                    <span>&nbsp;pay 카카오페이</span>
-                </div>
-            </div>
-            <div class="btn_box bottom_btn_box" v-if="!is_android && store.store_id != 'dg500004'" v-show="select_radio == '선불'">
-                <div class="kakao_pay" :class="{'select_pay' : select_pay == 3}" @click="default_card_click(3)">
-                    <img class="icon_img" :src="select_pay == 3 ? img_s_kakao : img_n_kakao" width="23rem" height="16.42rem"/>
-                    <span>&nbsp;pay 카카오페이</span>
-                </div>
-            </div>
-            <div v-show="select_radio == '선불'">
-                <!-- <span class="hana_card">&nbsp;&nbsp;하나카드는 신용카드, 앱카드 결제만 지원합니다.</span> -->
-            </div>
-            <v-divider class="hr_tag" shadowInset/>
-        </div>
-        <div v-if="store.order_yn == 'Y' && store.pay_yn == 'Y'" class="pay_check_postpay">
-            <div @click="postpay_click">
-              <v-radio-group v-model="select_radio" hide-details>
-                <v-radio name="pay_type1" value="후불" label="후불"></v-radio>
-                <!-- <mu-radio name="pay_type1" v-model="select_radio" labelClass="postpay" label="후불" nativeValue="후불"/> -->
-                <span :class="[{'postpay_desc' : !user_agent}, {'mix_padding' : user_agent}]">&nbsp;&nbsp;(카운터에서 직접 결제)</span></v-radio-group>
-                <v-divider class="hr_tag" shadowInset/>
-            </div>
-        </div>
-    </div>
-
-    <div v-else-if="store.pay_yn != 'Y' && store.one_yn != 'Y' && table_id != 998 && table_id != 0" class="pay_select1">
-        <div>
-            <div class="pay_check_prepayment">
-                <span :class="[{'prepayment_desc' : !user_agent}, {'mix_padding' : user_agent}]">&nbsp;&nbsp;</span>
-            </div>
-        </div>
-    </div>
-
-    <div v-if="store.pay_yn == 'Y'" v-show="select_radio == '선불'" class="insert_phone">
-          <div class="phone_number" style="background-color: #eee; padding: 0.5rem;">
-             <v-badge v-if="user_agent_chk" content="2" circle color="#0954ba" badgeClass="badge_size"> 
-            <span class="phone_title">&nbsp;휴대폰 번호 입력</span>
-            </v-badge>
-             <v-badge v-else content="2" circle color="#0954ba" badgeClass="badge_size_other">
-            <span class="phone_title">&nbsp;휴대폰 번호 입력</span>
-            </v-badge>
-          </div>
-        <div class="phone_insert_data">
-          
-          <img v-show="back_phone.length != 0" @click="close_click" src="../assets/img/close.svg"/>
-          <select class="phone_select" v-model="front_phone">
-            <option value="010">010</option>
-            <option value="011">011</option>
-            <option value="016">016</option>
-            <option value="017">017</option>
-            <option value="019">019</option>
-          </select>
-          <input class="phone_back_num" v-model="back_phone" type="tel" placeholder="00000000" @keyup="phone_num_custom" maxLength="8"/>
-        </div>
+  <div class="default-container">
+    <div
+      v-if="store.pay_yn == 'Y'"
+      v-show="select_radio == '선불'"
+      class="insert_phone"
+    >
+      <div
+        class="phone_number"
+        style="background-color: #eee; padding: 0.5rem;"
+      >
+        <span class="phone_title">&nbsp;휴대폰 번호 입력</span>
+      </div>
+      <div class="phone_insert_data">
+        <img
+          v-show="back_phone.length != 0"
+          @click="close_click"
+          src="../assets/img/close.svg"
+        />
+        <select class="phone_select" v-model="front_phone">
+          <option value="010">010</option>
+          <option value="011">011</option>
+          <option value="016">016</option>
+          <option value="017">017</option>
+          <option value="019">019</option>
+        </select>
+        <input
+          class="phone_back_num"
+          v-model="back_phone"
+          type="tel"
+          placeholder="00000000"
+          @keyup="phone_num_custom"
+          maxLength="8"
+        />
+      </div>
     </div>
 
     <div v-show="select_radio == '선불'" class="order_btns">
-        <div class="check_term">
-              <div class="check-item-wrap">
-                <div class="check-accept">위 내용을 확인하였으며 결제에 동의합니다.</div>
-              </div>
-              <div v-show="!check_term_hide">
-                <v-divider class="hr_tag" shadowInset/>
-                <div class="check-item-wrap">
-                    <div class="check-desc" @click="termClick('term_pay')">전자금융거래 이용약관</div>
-                </div>
-                <div class="check-item-wrap">
-                    <div class="check-desc" @click="termClick('term_p_collect')">개인정보의 수집 및 이용안내</div>
-                </div>
-                <div class="check-item-wrap">
-                    <div class="check-desc" @click="termClick('term_p_offer')">개인정보 제공 및 위탁 안내</div>
-                </div>
-              </div>
-            <div class="icon_arrow" @click="term_hide">
-                <v-icon v-if="check_term_hide">mdi-chevron-down</v-icon>
-                <v-icon v-else>mdi-chevron-up</v-icon>
-                <!-- <mu-icon v-if="check_term_hide" value="expand_more"/>
-                <mu-icon v-else value="expand_less"/> -->
+      <div class="check_term">
+        <div class="check-item-wrap">
+          <div class="check-accept">
+            위 내용을 확인하였으며 결제에 동의합니다.
+          </div>
+        </div>
+        <div v-show="!check_term_hide">
+          <v-divider class="hr_tag" shadowInset />
+          <div class="check-item-wrap">
+            <div class="check-desc" @click="termClick('term_pay')">
+              전자금융거래 이용약관
             </div>
-        </div>
-    </div>
-
-    <div v-show="!auth_confirm" v-if="store.order_phone_yn === 'Y' && select_radio ==='후불'" class="phone_insert">
-        <div class="phone_insert_title">휴대폰 인증</div>
-        <div class="phone_insert_data">
-          <img v-show="back_phone.length != 0" class="cancel_img" @click="close_click" src="../assets/img/close.svg"/>
-          <select class="phone_select" v-model="front_phone">
-            <option>010</option>
-            <option>011</option>
-            <option>016</option>
-            <option>017</option>
-            <option>019</option>
-          </select>
-          <input class="phone_back_num" v-model="back_phone" type="tel" placeholder="00000000" @keyup="phone_num_custom" maxLength="8"/>
-          <div class="number_submit">
-            <button type="button" @click="authClick()">전송</button>
+          </div>
+          <div class="check-item-wrap">
+            <div class="check-desc" @click="termClick('term_p_collect')">
+              개인정보의 수집 및 이용안내
+            </div>
+          </div>
+          <div class="check-item-wrap">
+            <div class="check-desc" @click="termClick('term_p_offer')">
+              개인정보 제공 및 위탁 안내
+            </div>
           </div>
         </div>
-        <div class="auth_div">
-          <div class="auth_input">
-            <v-text-field ref="f_auth_num" inputClass="_auth_num" fullWidth v-model="auth_num" type="tel" hintText="인증번호" hintTextClass="j_hint"/>
-            <span v-show="timeShow" class="time_3minute">{{min}}:{{second}}</span>
-          </div>
-          <div class="number_submit">
-            <button type="button" @click="confirm_auth()">확인</button>
-          </div>
+        <div class="icon_arrow" @click="term_hide">
+          <v-icon v-if="check_term_hide">mdi-chevron-down</v-icon>
+          <v-icon v-else>mdi-chevron-up</v-icon>
+          <!-- <mu-icon v-if="check_term_hide" value="expand_more"/>
+                <mu-icon v-else value="expand_less"/> -->
         </div>
+      </div>
     </div>
 
-    <div v-show="auth_confirm" v-if="store.order_phone_yn === 'Y' && select_radio ==='후불'" class="phone_insert2">
-        <span class="phone_title">&nbsp;휴대폰 번호 입력</span>
-        <div class="phone_insert_data">
-          <img v-show="back_phone.length != 0" @click="close_click" src="../assets/img/close.svg"/>
-          <select class="phone_select" v-model="front_phone">
-            <option value="010">010</option>
-            <option value="011">011</option>
-            <option value="016">016</option>
-            <option value="017">017</option>
-            <option value="019">019</option>
-          </select>
-          <input class="phone_back_num2" v-model="back_phone" type="tel" placeholder="00000000" @keyup="phone_num_custom" maxLength="8"/>
+    <div
+      v-show="!auth_confirm"
+      v-if="store.order_phone_yn === 'Y' && select_radio === '후불'"
+      class="phone_insert"
+    >
+      <div class="phone_insert_title">휴대폰 인증</div>
+      <div class="phone_insert_data">
+        <img
+          v-show="back_phone.length != 0"
+          class="cancel_img"
+          @click="close_click"
+          src="../assets/img/close.svg"
+        />
+        <select class="phone_select" v-model="front_phone">
+          <option>010</option>
+          <option>011</option>
+          <option>016</option>
+          <option>017</option>
+          <option>019</option>
+        </select>
+        <input
+          class="phone_back_num"
+          v-model="back_phone"
+          type="tel"
+          placeholder="00000000"
+          @keyup="phone_num_custom"
+          maxLength="8"
+        />
+        <div class="number_submit">
+          <button type="button" @click="authClick()">전송</button>
         </div>
+      </div>
+      <div class="auth_div">
+        <div class="auth_input">
+          <v-text-field
+            ref="f_auth_num"
+            inputClass="_auth_num"
+            fullWidth
+            v-model="auth_num"
+            type="tel"
+            hintText="인증번호"
+            hintTextClass="j_hint"
+          />
+          <span v-show="timeShow" class="time_3minute"
+            >{{ min }}:{{ second }}</span
+          >
+        </div>
+        <div class="number_submit">
+          <button type="button" @click="confirm_auth()">확인</button>
+        </div>
+      </div>
     </div>
 
-    
+    <div
+      v-show="auth_confirm"
+      v-if="store.order_phone_yn === 'Y' && select_radio === '후불'"
+      class="phone_insert2"
+    >
+      <span class="phone_title">&nbsp;휴대폰 번호 입력</span>
+      <div class="phone_insert_data">
+        <img
+          v-show="back_phone.length != 0"
+          @click="close_click"
+          src="../assets/img/close.svg"
+        />
+        <select class="phone_select" v-model="front_phone">
+          <option value="010">010</option>
+          <option value="011">011</option>
+          <option value="016">016</option>
+          <option value="017">017</option>
+          <option value="019">019</option>
+        </select>
+        <input
+          class="phone_back_num2"
+          v-model="back_phone"
+          type="tel"
+          placeholder="00000000"
+          @keyup="phone_num_custom"
+          maxLength="8"
+        />
+      </div>
+    </div>
+
     <v-col cols="12" sm="6">
-      <pay-btn v-show="select_radio == '선불'" @pay_go_click="pay_go_click" :btn_name="'결제하기 (매장)'" />
-      <v-btn x-large color="#043474" dark class="btn_order2" v-show="select_radio == '후불'" v-if="store.order_phone_yn == 'Y' " @click="order_check"  >주문하기 (매장)</v-btn>
-      <v-btn x-large color="#043474" dark class="btn_order2" v-show="select_radio == '후불'" v-else  @click="order_send2" >주문하기 (매장)</v-btn>
+      <pay-btn
+        v-show="select_radio == '선불'"
+        @pay_go_click="pay_go_click"
+        :btn_name="'결제하기'"
+      />
+      <v-btn
+        x-large
+        color="#043474"
+        dark
+        class="btn_order2"
+        v-show="select_radio == '후불'"
+        v-if="store.order_phone_yn == 'Y'"
+        @click="order_check"
+        >예약하기 (매장)</v-btn
+      >
+      <v-btn
+        x-large
+        color="#043474"
+        dark
+        class="btn_order2"
+        v-show="select_radio == '후불'"
+        v-else
+        @click="order_send2"
+        >예약하기 (매장)</v-btn
+      >
     </v-col>
 
     <!-- <mu-dialog :open="dialog" @close="close" title="앱카드 선택" dialogClass="dialog_appcard" bodyClass="dialog_appcard_body" scrollable>
@@ -203,7 +204,7 @@
          </mu-menu>
          <mu-raised-button primary label="선택" @click="card_check('APPCARD')" slot="actions"/>
        </mu-dialog> -->
-</div>
+  </div>
 </template>
 
 <script>
@@ -213,7 +214,7 @@ export default {
   name: "normalOrder",
   components: {
     // orderBtn,
-    payBtn
+    payBtn,
   },
   computed: {
     store() {
@@ -239,7 +240,7 @@ export default {
     },
     auth_confirm() {
       return this.$store.getters.auth_confirm;
-    }
+    },
   },
   data() {
     return {
@@ -274,7 +275,7 @@ export default {
       pay_go: false,
       params: {},
       user_agent: "",
-      user_agent_chk: true
+      user_agent_chk: true,
     };
   },
   mounted() {
@@ -382,7 +383,7 @@ export default {
           packing_yn: "",
           address1: "",
           address_detail: "",
-          table_id: this.table_id
+          table_id: this.table_id,
         };
 
         this.$children[this.$children.length - 2].pay_send(this.params);
@@ -477,11 +478,11 @@ export default {
         pay_gb: "ORDER",
         biz_dt: this.store.biz_dt,
         web_app_gb: "A2D",
-        coupon_id: coupon_id
+        coupon_id: coupon_id,
       };
 
       this.$store.commit("loading", true);
-      this.$store.dispatch("c_order2", param).then(res => {
+      this.$store.dispatch("c_order2", param).then((res) => {
         this.$store.commit("loading", false);
         this.$store.commit("coupon_obj", "");
         if (res.result == "CLOSED") {
@@ -534,9 +535,9 @@ export default {
         clearInterval(this.interval);
         this.$store.commit("loading", true);
         var param = {
-          user_id: this.user_phone_num
+          user_id: this.user_phone_num,
         };
-        this.$store.dispatch("cu_user_auth_new", param).then(res => {
+        this.$store.dispatch("cu_user_auth_new", param).then((res) => {
           this.$store.commit("loading", false);
           if (res.result == "SUCCESS") {
             this.showToast("카카오톡 또는 SMS 로 메시지를 전송했습니다.");
@@ -582,9 +583,9 @@ export default {
         this.$store.commit("loading", true);
         var param = {
           user_id: this.user_phone_num,
-          auth_num: this.auth_num
+          auth_num: this.auth_num,
         };
-        this.$store.dispatch("r_user_auth", param).then(res => {
+        this.$store.dispatch("r_user_auth", param).then((res) => {
           this.$store.commit("loading", false);
           this.showToast(res.result);
           if (res.result == "인증에 성공했습니다.") {
@@ -602,8 +603,8 @@ export default {
       this.$nextTick(() => {
         this.back_phone = this.back_phone.replace(/[^0-9]/g, "");
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -619,7 +620,6 @@ export default {
 .phone_title {
   font-size: 1rem;
   font-weight: bold;
-  margin-left: 1.875rem;
 }
 .pay_check_prepayment {
   position: relative;
@@ -627,9 +627,9 @@ export default {
   /* border-bottom: 0.05rem solid #bbbbbb; */
 }
 .v-input--selection-controls {
-    margin-top: 0.5rem;
-    padding-top: 4px;
-    font-weight: bold;
+  margin-top: 0.5rem;
+  padding-top: 4px;
+  font-weight: bold;
 }
 .only_order {
   padding-top: 1rem;
@@ -946,10 +946,10 @@ export default {
   right: 0;
 }
 .v-btn:not(.v-btn--round).v-size--x-large {
-    height: 52px;
-    min-width: 92px;
-    width: 100%;
-    border: 0.1rem solid #0856c3;
+  height: 52px;
+  min-width: 92px;
+  width: 100%;
+  border: 0.1rem solid #0856c3;
 }
 .btn_order {
   color: white;
