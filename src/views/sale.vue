@@ -1,7 +1,7 @@
 <template>
   <div class="n_container">
     <v-tabs fixed-tabs v-model="tab" @change="tabChange">
-      <v-tab class="v_tab" href="#M">버스</v-tab>
+      <v-tab class="v_tab" href="#M">예약</v-tab>
       <v-tab class="v_tab" href="#R">리뷰</v-tab>
       <v-tab class="v_tab" href="#I">소개</v-tab>
     </v-tabs>

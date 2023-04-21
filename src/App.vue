@@ -42,7 +42,7 @@
             <v-icon>mdi-silverware-variant</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>버스예약</v-list-item-title>
+            <v-list-item-title>예약</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
